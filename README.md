@@ -1,0 +1,2 @@
+# AssimpLoadingBlogCode
+ Assimp QT test
