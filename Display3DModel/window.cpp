@@ -48,8 +48,8 @@ OpenGLWindow::OpenGLWindow( SceneSelector *sceneSelector, int refreshRate, int m
     resize( 800, 600 );
     create();
 
-    connect( this, SIGNAL( widthChanged( int ) ), this, SLOT( resizeGL() ) );
-    connect( this, SIGNAL( heightChanged( int ) ), this, SLOT( resizeGL() ) );
+    connect( this, SIGNAL( widthChanged(int) ), this, SLOT( resizeGL() ) );
+    connect( this, SIGNAL( heightChanged(int) ), this, SLOT( resizeGL() ) );
     connect( m_context, SIGNAL(aboutToBeDestroyed()), this, SLOT(cleanup()), Qt::DirectConnection );
 
     initializeGL();

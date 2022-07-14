@@ -15,12 +15,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
+    mainwindow.cpp \
         window.cpp \
     scene.cpp \
     modelloader.cpp \
     scene_gles.cpp
 
 HEADERS  += window.h \
+    mainwindow.h \
     scene.h \
     modelloader.h \
     scene_gles.h \
@@ -37,3 +39,6 @@ OTHER_FILES += ads_fragment.vert ads_fragment.frag \
 
 RESOURCES += \
     resources.qrc
+
+FORMS += \
+    mainwindow.ui

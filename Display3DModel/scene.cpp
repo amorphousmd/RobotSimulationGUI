@@ -187,13 +187,13 @@ void Scene::update()
     //}
 
 
-        rotation += 5.0f;
+    rotation += 1.0f;
 
 
     // Set the model matrix
     // Translate and rotate it a bit to get a better view of the model
     m_model.setToIdentity();
-    m_model.translate(0.0f, 0.0f, .5f);
+    m_model.translate(0.0f, 0.0f, -1.0f);
     m_model.rotate(rotation, 0.0f, 1.0f, 0.0f);
 
     // Set shader uniforms for light information
