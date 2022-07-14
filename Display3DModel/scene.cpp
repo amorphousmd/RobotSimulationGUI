@@ -1,8 +1,12 @@
 #include "scene.h"
 #include "QTime"
+#include "mainwindow.h"
 
 QTime prevTime = QTime::currentTime();
-double rotation = 0.0f;
+double dRotationX = 0.0f;
+double dRotationY = 0.0f;
+double dRotationZ = 0.0f;
+
 Scene::Scene(QString filepath, ModelLoader::PathType pathType, QString texturePath) :
     m_indexBuffer(QOpenGLBuffer::IndexBuffer)
   , m_filepath(filepath)
@@ -149,7 +153,6 @@ void Scene::setupLightingAndMatrices()
                 aspect,         // aspect ratio
                 0.3f,           // near clipping plane
                 1000.0f);       // far clipping plane
-
     m_lightInfo.Position = QVector4D( -1.0f, 1.0f, 1.0f, 1.0f );
     //m_lightInfo.Intensity = QVector3D( .5f, .5f, .f5);
     m_lightInfo.Intensity = QVector3D( 1.0f, 1.0f, 1.0f);
@@ -182,14 +185,15 @@ void Scene::update()
     QTime crntTime = QTime::currentTime();
 
 
-    rotation = 180.0f;
 
 
     // Set the model matrix
     // Translate and rotate it a bit to get a better view of the model
     m_model.setToIdentity();
     m_model.translate(0.0f, 0.0f, -1.0f);
-    m_model.rotate(rotation, 0.0f, 1.0f, 0.0f);
+    m_model.rotate(float(getRotationX()), 1.0f, 0.0f, 0.0f);
+    m_model.rotate(float(getRotationY()), 0.0f, 1.0f, 0.0f);
+    m_model.rotate(float(getRotationZ()), 0.0f, 0.0f, 1.0f);
 
     // Set shader uniforms for light information
     m_shaderProgram.setUniformValue( "lightPosition", m_lightInfo.Position );

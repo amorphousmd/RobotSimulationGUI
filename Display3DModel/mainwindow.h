@@ -13,10 +13,23 @@ class MainWindow : public QMainWindow
 
 public:
     QWidget* getWidgetMain();
+
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+private slots:
+
+    void on_verticalSlider_X_valueChanged(int value);
+
+    void on_verticalSlider_Y_valueChanged(int value);
+
+    void on_verticalSlider_Z_valueChanged(int value);
 
 private:
     Ui::MainWindow *ui;
 };
+
+int getRotationX();
+int getRotationY();
+int getRotationZ();
 #endif // MAINWINDOW_H

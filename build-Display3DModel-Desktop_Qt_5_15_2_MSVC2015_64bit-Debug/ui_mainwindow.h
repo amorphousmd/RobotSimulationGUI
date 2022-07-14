@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QWidget>
 
@@ -19,31 +20,49 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
-    QSlider *verticalSlider;
-    QSlider *verticalSlider_2;
-    QSlider *verticalSlider_3;
     QWidget *widgetMain;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QSlider *verticalSlider_X;
+    QSlider *verticalSlider_Y;
+    QSlider *verticalSlider_Z;
 
     void setupUi(QWidget *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(1165, 701);
-        verticalSlider = new QSlider(MainWindow);
-        verticalSlider->setObjectName(QString::fromUtf8("verticalSlider"));
-        verticalSlider->setGeometry(QRect(940, 220, 22, 160));
-        verticalSlider->setOrientation(Qt::Vertical);
-        verticalSlider_2 = new QSlider(MainWindow);
-        verticalSlider_2->setObjectName(QString::fromUtf8("verticalSlider_2"));
-        verticalSlider_2->setGeometry(QRect(990, 220, 22, 160));
-        verticalSlider_2->setOrientation(Qt::Vertical);
-        verticalSlider_3 = new QSlider(MainWindow);
-        verticalSlider_3->setObjectName(QString::fromUtf8("verticalSlider_3"));
-        verticalSlider_3->setGeometry(QRect(1050, 220, 22, 160));
-        verticalSlider_3->setOrientation(Qt::Vertical);
         widgetMain = new QWidget(MainWindow);
         widgetMain->setObjectName(QString::fromUtf8("widgetMain"));
         widgetMain->setGeometry(QRect(10, 10, 921, 681));
+        widgetMain->setAutoFillBackground(false);
+        horizontalLayoutWidget = new QWidget(MainWindow);
+        horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(930, 230, 221, 171));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        verticalSlider_X = new QSlider(horizontalLayoutWidget);
+        verticalSlider_X->setObjectName(QString::fromUtf8("verticalSlider_X"));
+        verticalSlider_X->setMaximum(360);
+        verticalSlider_X->setOrientation(Qt::Vertical);
+
+        horizontalLayout->addWidget(verticalSlider_X);
+
+        verticalSlider_Y = new QSlider(horizontalLayoutWidget);
+        verticalSlider_Y->setObjectName(QString::fromUtf8("verticalSlider_Y"));
+        verticalSlider_Y->setMaximum(360);
+        verticalSlider_Y->setOrientation(Qt::Vertical);
+
+        horizontalLayout->addWidget(verticalSlider_Y);
+
+        verticalSlider_Z = new QSlider(horizontalLayoutWidget);
+        verticalSlider_Z->setObjectName(QString::fromUtf8("verticalSlider_Z"));
+        verticalSlider_Z->setMaximum(360);
+        verticalSlider_Z->setOrientation(Qt::Vertical);
+
+        horizontalLayout->addWidget(verticalSlider_Z);
+
 
         retranslateUi(MainWindow);
 
