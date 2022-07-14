@@ -22,7 +22,7 @@ public:
     QSlider *verticalSlider;
     QSlider *verticalSlider_2;
     QSlider *verticalSlider_3;
-    QWidget *widget;
+    QWidget *widgetMain;
 
     void setupUi(QWidget *MainWindow)
     {
@@ -41,9 +41,9 @@ public:
         verticalSlider_3->setObjectName(QString::fromUtf8("verticalSlider_3"));
         verticalSlider_3->setGeometry(QRect(1050, 220, 22, 160));
         verticalSlider_3->setOrientation(Qt::Vertical);
-        widget = new QWidget(MainWindow);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(10, 10, 921, 681));
+        widgetMain = new QWidget(MainWindow);
+        widgetMain->setObjectName(QString::fromUtf8("widgetMain"));
+        widgetMain->setGeometry(QRect(10, 10, 921, 681));
 
         retranslateUi(MainWindow);
 

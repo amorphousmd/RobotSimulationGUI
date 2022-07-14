@@ -180,14 +180,9 @@ void Scene::update()
     m_shaderProgram.bind();
 
     QTime crntTime = QTime::currentTime();
-    //if (float(crntTime - prevTime) >= 0.01f)
-    //{
-    //    rotation += 0.5f;
-    //    prevTime = crntTime;
-    //}
 
 
-    rotation += 1.0f;
+    rotation = 180.0f;
 
 
     // Set the model matrix
