@@ -13,7 +13,9 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -38,15 +40,18 @@ public:
     QSlider *verticalSlider_Roll;
     QSlider *verticalSlider_Pitch;
     QSlider *verticalSlider_Yaw;
+    QPushButton *pushButton;
+    QTextBrowser *txtFileName;
+    QLabel *label_3;
 
     void setupUi(QWidget *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1165, 701);
+        MainWindow->resize(1159, 699);
         widgetMain = new QWidget(MainWindow);
         widgetMain->setObjectName(QString::fromUtf8("widgetMain"));
-        widgetMain->setGeometry(QRect(10, 10, 921, 681));
+        widgetMain->setGeometry(QRect(10, 30, 921, 661));
         widgetMain->setAutoFillBackground(false);
         verticalLayoutWidget_4 = new QWidget(MainWindow);
         verticalLayoutWidget_4->setObjectName(QString::fromUtf8("verticalLayoutWidget_4"));
@@ -136,6 +141,15 @@ public:
 
         verticalLayout_4->addLayout(verticalLayout_2);
 
+        pushButton = new QPushButton(MainWindow);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(1020, 650, 131, 29));
+        txtFileName = new QTextBrowser(MainWindow);
+        txtFileName->setObjectName(QString::fromUtf8("txtFileName"));
+        txtFileName->setGeometry(QRect(1020, 610, 131, 31));
+        label_3 = new QLabel(MainWindow);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setGeometry(QRect(940, 620, 81, 20));
 
         retranslateUi(MainWindow);
 
@@ -147,6 +161,8 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "RobotSimulation", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Translation Control", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Rotation Control", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "Open File...", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "Current File:", nullptr));
     } // retranslateUi
 
 };

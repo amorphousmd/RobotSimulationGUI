@@ -5,6 +5,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtGui/QScreen>
 #include "QWidget"
+#include <QFileDialog>
 #include "scene.h"
 #include "scene_gles.h"
 
@@ -96,5 +97,15 @@ int getTranslationY()
 int getTranslationZ()
 {
     return nTranslationZ;
+}
+
+
+void MainWindow::on_pushButton_pressed()
+{
+    QString filename= QFileDialog::getOpenFileName(this, "Choose File");
+    QFile f(filename);
+    QFileInfo fileInfo(f.fileName());
+    QString nameFile(fileInfo.fileName());
+    ui->txtFileName->setText(nameFile);
 }
 

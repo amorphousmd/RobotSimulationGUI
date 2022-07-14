@@ -31,6 +31,8 @@ private slots:
 
     void on_verticalSlider_transZ_valueChanged(int value);
 
+    void on_pushButton_pressed();
+
 private:
     Ui::MainWindow *ui;
 };
