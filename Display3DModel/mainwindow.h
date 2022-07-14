@@ -19,11 +19,17 @@ public:
 
 private slots:
 
-    void on_verticalSlider_X_valueChanged(int value);
+    void on_verticalSlider_Roll_valueChanged(int value);
 
-    void on_verticalSlider_Y_valueChanged(int value);
+    void on_verticalSlider_Pitch_valueChanged(int value);
 
-    void on_verticalSlider_Z_valueChanged(int value);
+    void on_verticalSlider_Yaw_valueChanged(int value);
+
+    void on_verticalSlider_transX_valueChanged(int value);
+
+    void on_verticalSlider_transY_valueChanged(int value);
+
+    void on_verticalSlider_transZ_valueChanged(int value);
 
 private:
     Ui::MainWindow *ui;
@@ -32,4 +38,8 @@ private:
 int getRotationX();
 int getRotationY();
 int getRotationZ();
+int getTranslationX();
+int getTranslationY();
+int getTranslationZ();
+
 #endif // MAINWINDOW_H

@@ -190,7 +190,7 @@ void Scene::update()
     // Set the model matrix
     // Translate and rotate it a bit to get a better view of the model
     m_model.setToIdentity();
-    m_model.translate(0.0f, 0.0f, -1.0f);
+    m_model.translate(0.0f + float(getTranslationX()) / 100, 0.0f + float(getTranslationY()) / 100, -1.0f + float(getTranslationZ()) / 100);
     m_model.rotate(float(getRotationX()), 1.0f, 0.0f, 0.0f);
     m_model.rotate(float(getRotationY()), 0.0f, 1.0f, 0.0f);
     m_model.rotate(float(getRotationZ()), 0.0f, 0.0f, 1.0f);

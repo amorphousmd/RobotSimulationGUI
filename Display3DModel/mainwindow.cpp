@@ -8,6 +8,9 @@
 #include "scene.h"
 #include "scene_gles.h"
 
+int nTranslationX = 0;
+int nTranslationY = 0;
+int nTranslationZ = 0;
 int nRotationX = 0;
 int nRotationY = 0;
 int nRotationZ = 0;
@@ -30,19 +33,19 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_verticalSlider_X_valueChanged(int value)
+void MainWindow::on_verticalSlider_Roll_valueChanged(int value)
 {
     nRotationX = value;
 }
 
 
-void MainWindow::on_verticalSlider_Y_valueChanged(int value)
+void MainWindow::on_verticalSlider_Pitch_valueChanged(int value)
 {
     nRotationY = value;
 }
 
 
-void MainWindow::on_verticalSlider_Z_valueChanged(int value)
+void MainWindow::on_verticalSlider_Yaw_valueChanged(int value)
 {
     nRotationZ = value;
 }
@@ -62,3 +65,36 @@ int getRotationZ()
 {
     return nRotationZ;
 }
+
+void MainWindow::on_verticalSlider_transX_valueChanged(int value)
+{
+    nTranslationX = value;
+}
+
+
+void MainWindow::on_verticalSlider_transY_valueChanged(int value)
+{
+    nTranslationY = value;
+}
+
+
+void MainWindow::on_verticalSlider_transZ_valueChanged(int value)
+{
+    nTranslationZ = value;
+}
+
+int getTranslationX()
+{
+    return nTranslationX;
+}
+
+int getTranslationY()
+{
+    return nTranslationY;
+}
+
+int getTranslationZ()
+{
+    return nTranslationZ;
+}
+
