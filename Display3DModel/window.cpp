@@ -1,5 +1,4 @@
 #include "window.h"
-
 #include <QKeyEvent>
 #include <QOpenGLContext>
 #include <QTimer>
@@ -47,14 +46,12 @@ OpenGLWindow::OpenGLWindow( SceneSelector *sceneSelector, int refreshRate, int m
     setFormat( m_context->format() );
     //resize( 800, 600 );
     create();
-
     connect( this, SIGNAL( widthChanged(int) ), this, SLOT( resizeGL() ) );
     connect( this, SIGNAL( heightChanged(int) ), this, SLOT( resizeGL() ) );
     connect( m_context, SIGNAL(aboutToBeDestroyed()), this, SLOT(cleanup()), Qt::DirectConnection );
 
     initializeGL();
     resizeGL();
-
     m_timer = new QTimer;
     m_timer->setInterval(refreshRate);
     connect(m_timer, &QTimer::timeout, this, &OpenGLWindow::updateGL);
@@ -71,6 +68,13 @@ void OpenGLWindow::initializeGL()
     m_context->makeCurrent( this );
 
     m_scene->initialize();
+}
+
+void OpenGLWindow::initializeGL1()
+{
+    m_context->makeCurrent( this );
+
+    m_scene->initialize1();
 }
 
 void OpenGLWindow::updateGL()

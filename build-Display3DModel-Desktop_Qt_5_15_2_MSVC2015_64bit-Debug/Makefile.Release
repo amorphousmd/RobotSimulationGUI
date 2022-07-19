@@ -561,13 +561,11 @@ release\main.obj: ..\Display3DModel\main.cpp ..\Display3DModel\window.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qlocale.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qset.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qcontiguouscache.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QApplication \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qapplication.h \
+		..\Display3DModel\mainwindow.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QMainWindow \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qmainwindow.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtwidgetsglobal.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtwidgets-config.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qcoreapplication.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qeventloop.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdesktopwidget.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qwidget.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qpalette.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qbrush.h \
@@ -583,8 +581,47 @@ release\main.obj: ..\Display3DModel\main.cpp ..\Display3DModel\window.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qfiledevice.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qvector2d.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtouchdevice.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtabwidget.h \
+		ui_mainwindow.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QVariant \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QApplication \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qapplication.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qcoreapplication.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qeventloop.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdesktopwidget.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qguiapplication.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qinputmethod.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QHBoxLayout \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qboxlayout.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qlayout.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qlayoutitem.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qgridlayout.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QLabel \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qlabel.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qframe.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QPushButton \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qpushbutton.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractbutton.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QSlider \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qslider.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractslider.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QTextBrowser \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtextbrowser.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtextedit.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractscrollarea.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtextdocument.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtextoption.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtextcursor.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtextformat.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qpen.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QVBoxLayout \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QWidget \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QScreen \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qscreen.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QList \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QSize \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QSizeF \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QTransform \
 		..\Display3DModel\scene.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QOpenGLShaderProgram \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qopenglshaderprogram.h \
@@ -610,8 +647,7 @@ release\main.obj: ..\Display3DModel\main.cpp ..\Display3DModel\window.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qdir.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qfileinfo.h \
 		..\Display3DModel\scenebase.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QString \
-		..\Display3DModel\scene_gles.h
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QString
 
 release\mainwindow.obj: ..\Display3DModel\mainwindow.cpp ..\Display3DModel\mainwindow.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QMainWindow \
@@ -720,7 +756,99 @@ release\mainwindow.obj: ..\Display3DModel\mainwindow.cpp ..\Display3DModel\mainw
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtouchdevice.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qicon.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QVariant \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QApplication \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qapplication.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qcoreapplication.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qeventloop.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdesktopwidget.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qguiapplication.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qinputmethod.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QHBoxLayout \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qboxlayout.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qlayout.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qlayoutitem.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qgridlayout.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QLabel \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qlabel.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qframe.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QPushButton \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qpushbutton.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractbutton.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QSlider \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qslider.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractslider.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QTextBrowser \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtextbrowser.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtextedit.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractscrollarea.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtextdocument.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtextoption.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtextcursor.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtextformat.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qpen.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QVBoxLayout \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QWidget \
+		..\Display3DModel\window.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QWindow \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qwindow.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QObject \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QEvent \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QMargins \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QRect \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qsurface.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qsurfaceformat.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QOpenGLContext \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qopenglcontext.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QScopedPointer \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QSurfaceFormat \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qopengl.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qt_windows.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtANGLE\GLES3\gl3.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtANGLE\GLES3\gl3platform.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtANGLE\KHR\khrplatform.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtANGLE\GLES2\gl2.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtANGLE\GLES2\gl2platform.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qopengles2ext.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qopenglext.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qopenglversionfunctions.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QScreen \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qscreen.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QList \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QSize \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QSizeF \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QTransform \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QFileDialog \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qfiledialog.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qdir.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qfileinfo.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdialog.h \
+		..\Display3DModel\scene.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QOpenGLShaderProgram \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qopenglshaderprogram.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qvector3d.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qvector4d.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qmatrix4x4.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qquaternion.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qgenericmatrix.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QOpenGLBuffer \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qopenglbuffer.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QOpenGLVertexArrayObject \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qopenglvertexarrayobject.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QOpenGLFunctions_3_3_Core \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qopenglfunctions_3_3_core.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QOpenGLVersionFunctions \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QOpenGLFunctions \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qopenglfunctions.h \
+		..\Display3DModel\modelloader.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QMatrix4x4 \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QFile \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QSharedPointer \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QDir \
+		..\Display3DModel\scenebase.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QString \
+		..\Display3DModel\scene_gles.h
 
 release\window.obj: ..\Display3DModel\window.cpp ..\Display3DModel\window.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QWindow \
@@ -965,7 +1093,41 @@ release\scene.obj: ..\Display3DModel\scene.cpp ..\Display3DModel\scene.h \
 		..\Display3DModel\scenebase.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QString \
 		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QTime \
-		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qdatetime.h
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qdatetime.h \
+		..\Display3DModel\mainwindow.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QMainWindow \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qmainwindow.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtwidgetsglobal.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtwidgets-config.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qwidget.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qwindowdefs.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qwindowdefs_win.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qpaintdevice.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qpalette.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qcolor.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qrgb.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qrgba64.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qbrush.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qmatrix.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qpolygon.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qregion.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qline.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtransform.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qimage.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qpixelformat.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qpixmap.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qfont.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qfontmetrics.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qfontinfo.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qsizepolicy.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qcursor.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qkeysequence.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qevent.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qurl.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qurlquery.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtouchdevice.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtabwidget.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qicon.h
 
 release\modelloader.obj: ..\Display3DModel\modelloader.cpp ..\Display3DModel\modelloader.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QMatrix4x4 \

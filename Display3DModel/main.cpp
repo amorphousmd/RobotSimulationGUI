@@ -36,12 +36,10 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     SceneSelect sceneSelect;
-    SceneSelect sceneSelect2;
 
-    OpenGLWindow w1(&sceneSelect, 40, 3, 3);
-    OpenGLWindow w2(&sceneSelect2, 40, 3, 3);
+    OpenGLWindow w1(&sceneSelect, 20, 3, 3); // Lower the second variable to increase refresh rate
 
-    QWidget *container = QMainWindow::createWindowContainer(&w2);
+    QWidget *container = QMainWindow::createWindowContainer(&w1);
     QWidget *widget = w.getWidgetMain();
     QHBoxLayout *hLayout = new QHBoxLayout(widget);
     QVBoxLayout *vLayout = new QVBoxLayout();
