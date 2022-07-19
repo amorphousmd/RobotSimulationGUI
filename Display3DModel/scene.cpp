@@ -7,9 +7,10 @@ double dRotationX = 0.0f;
 double dRotationY = 0.0f;
 double dRotationZ = 0.0f;
 
-Scene::Scene(QString filepath, ModelLoader::PathType pathType, QString texturePath) :
+Scene::Scene(QString filepath, QString filepath2, ModelLoader::PathType pathType, QString texturePath) :
     m_indexBuffer(QOpenGLBuffer::IndexBuffer)
   , m_filepath(filepath)
+  , m_filepath2(filepath2)
   , m_pathType(pathType)
   , m_texturePath(texturePath)
   , m_error(false)
@@ -49,8 +50,14 @@ void Scene::createShaderProgram(QString vShader, QString fShader)
 void Scene::createBuffers()
 {
     ModelLoader model;
+    ModelLoader model1;
 
     if(!model.Load(m_filepath, m_pathType))
+    {
+        m_error = true;
+        return;
+    }
+    if(!model1.Load(m_filepath, m_pathType))
     {
         m_error = true;
         return;
@@ -191,7 +198,7 @@ void Scene::update()
     // Translate and rotate it a bit to get a better view of the model
     m_model.setToIdentity();
     m_model.translate(0.0f + float(getTranslationX()) / 100, 0.0f + float(getTranslationY()) / 100, -1.0f + float(getTranslationZ()) / 100);
-    m_model.rotate(float(getRotationX()), 1.0f, 0.0f, 0.0f);
+    m_model.rotate(float(getRotationX()) - 90.0f, 1.0f, 0.0f, 0.0f);
     m_model.rotate(float(getRotationY()), 0.0f, 1.0f, 0.0f);
     m_model.rotate(float(getRotationZ()), 0.0f, 0.0f, 1.0f);
 

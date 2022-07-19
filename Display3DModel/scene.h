@@ -13,7 +13,7 @@
 class Scene : public QOpenGLFunctions_3_3_Core, public SceneBase
 {
 public:
-    Scene(QString filepath, ModelLoader::PathType pathType, QString texturePath="");
+    Scene(QString filepath, QString filepath2, ModelLoader::PathType pathType, QString texturePath="");
     void initialize();
     void resize(int w, int h);
     void update();
@@ -43,6 +43,7 @@ private:
     QMatrix4x4 m_projection, m_view, m_model;
 
     QString m_filepath;
+    QString m_filepath2;
     ModelLoader::PathType m_pathType;
     QString m_texturePath;
 
