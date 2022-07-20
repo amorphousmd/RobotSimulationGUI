@@ -1,16 +1,25 @@
 #include "scene.h"
 #include "QTime"
 #include "mainwindow.h"
+#include <QDebug>
 
 QTime prevTime = QTime::currentTime();
 double dRotationX = 0.0f;
 double dRotationY = 0.0f;
 double dRotationZ = 0.0f;
+QMatrix4x4 h10 = QMatrix4x4(0.0f, 0.0f, 1.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 89.06f, 0.0f, 0.0f, 0.0f, 1.0f);
+QMatrix4x4 h21 = QMatrix4x4(-1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, -135.7f, 0.0f, 0.0f, 0.0f, 1.0f);
+QMatrix4x4 h32 = QMatrix4x4(-1.0f, 0.0f, 0.0f, -683.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 130.4f, 0.0f, 0.0f, 0.0f, 1.0f);
+QMatrix4x4 h43 = QMatrix4x4(1.0f, 0.0f, 0.0f, 60.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f);
 
-Scene::Scene(QString filepath, QString filepath2, ModelLoader::PathType pathType, QString texturePath) :
+Scene::Scene(QString filepath, QString filepath2, QString filepath3, QString filepath4, QString filepath5, QString filepath6, ModelLoader::PathType pathType, QString texturePath) :
     m_indexBuffer(QOpenGLBuffer::IndexBuffer)
   , m_filepath(filepath)
   , m_filepath2(filepath2)
+  , m_filepath3(filepath3)
+  , m_filepath4(filepath4)
+  , m_filepath5(filepath5)
+  , m_filepath6(filepath6)
   , m_pathType(pathType)
   , m_texturePath(texturePath)
   , m_error(false)
@@ -173,6 +182,230 @@ void Scene::createBuffers1()
     m_rootNode = model1.getNodeData();
 }
 
+void Scene::createBuffers2()
+{
+    ModelLoader model2;
+
+    if(!model2.Load(m_filepath3, m_pathType))
+    {
+        m_error = true;
+        return;
+    }
+
+    QVector<float> *vertices;
+    QVector<float> *normals;
+    QVector<QVector<float> > *textureUV;
+    QVector<unsigned int> *indices;
+
+    model2.getBufferData(&vertices, &normals, &indices);
+    model2.getTextureData(&textureUV, 0, 0);
+
+    // Create a vertex array object
+    m_vao.create();
+    m_vao.bind();
+
+    // Create a buffer and copy the vertex data to it
+    m_vertexBuffer.create();
+    m_vertexBuffer.setUsagePattern( QOpenGLBuffer::StaticDraw );
+    m_vertexBuffer.bind();
+    m_vertexBuffer.allocate( &(*vertices)[0], vertices->size() * sizeof( float ) );
+
+    // Create a buffer and copy the vertex data to it
+    m_normalBuffer.create();
+    m_normalBuffer.setUsagePattern( QOpenGLBuffer::StaticDraw );
+    m_normalBuffer.bind();
+    m_normalBuffer.allocate( &(*normals)[0], normals->size() * sizeof( float ) );
+
+    if(textureUV != 0 && textureUV->size() != 0)
+    {
+        // Create a buffer and copy the vertex data to it
+        m_textureUVBuffer.create();
+        m_textureUVBuffer.setUsagePattern( QOpenGLBuffer::StaticDraw );
+        m_textureUVBuffer.bind();
+        int texSize = 0;
+        for(int ii=0; ii<textureUV->size(); ++ii)
+            texSize += textureUV->at(ii).size();
+
+        m_textureUVBuffer.allocate( &(*textureUV)[0][0], texSize * sizeof( float ) );
+    }
+
+    // Create a buffer and copy the index data to it
+    m_indexBuffer.create();
+    m_indexBuffer.setUsagePattern( QOpenGLBuffer::StaticDraw );
+    m_indexBuffer.bind();
+    m_indexBuffer.allocate( &(*indices)[0], indices->size() * sizeof( unsigned int ) );
+
+    m_rootNode = model2.getNodeData();
+}
+
+void Scene::createBuffers3()
+{
+    ModelLoader model3;
+
+    if(!model3.Load(m_filepath4, m_pathType))
+    {
+        m_error = true;
+        return;
+    }
+
+    QVector<float> *vertices;
+    QVector<float> *normals;
+    QVector<QVector<float> > *textureUV;
+    QVector<unsigned int> *indices;
+
+    model3.getBufferData(&vertices, &normals, &indices);
+    model3.getTextureData(&textureUV, 0, 0);
+
+    // Create a vertex array object
+    m_vao.create();
+    m_vao.bind();
+
+    // Create a buffer and copy the vertex data to it
+    m_vertexBuffer.create();
+    m_vertexBuffer.setUsagePattern( QOpenGLBuffer::StaticDraw );
+    m_vertexBuffer.bind();
+    m_vertexBuffer.allocate( &(*vertices)[0], vertices->size() * sizeof( float ) );
+
+    // Create a buffer and copy the vertex data to it
+    m_normalBuffer.create();
+    m_normalBuffer.setUsagePattern( QOpenGLBuffer::StaticDraw );
+    m_normalBuffer.bind();
+    m_normalBuffer.allocate( &(*normals)[0], normals->size() * sizeof( float ) );
+
+    if(textureUV != 0 && textureUV->size() != 0)
+    {
+        // Create a buffer and copy the vertex data to it
+        m_textureUVBuffer.create();
+        m_textureUVBuffer.setUsagePattern( QOpenGLBuffer::StaticDraw );
+        m_textureUVBuffer.bind();
+        int texSize = 0;
+        for(int ii=0; ii<textureUV->size(); ++ii)
+            texSize += textureUV->at(ii).size();
+
+        m_textureUVBuffer.allocate( &(*textureUV)[0][0], texSize * sizeof( float ) );
+    }
+
+    // Create a buffer and copy the index data to it
+    m_indexBuffer.create();
+    m_indexBuffer.setUsagePattern( QOpenGLBuffer::StaticDraw );
+    m_indexBuffer.bind();
+    m_indexBuffer.allocate( &(*indices)[0], indices->size() * sizeof( unsigned int ) );
+
+    m_rootNode = model3.getNodeData();
+}
+
+void Scene::createBuffers4()
+{
+    ModelLoader model4;
+
+    if(!model4.Load(m_filepath5, m_pathType))
+    {
+        m_error = true;
+        return;
+    }
+
+    QVector<float> *vertices;
+    QVector<float> *normals;
+    QVector<QVector<float> > *textureUV;
+    QVector<unsigned int> *indices;
+
+    model4.getBufferData(&vertices, &normals, &indices);
+    model4.getTextureData(&textureUV, 0, 0);
+
+    // Create a vertex array object
+    m_vao.create();
+    m_vao.bind();
+
+    // Create a buffer and copy the vertex data to it
+    m_vertexBuffer.create();
+    m_vertexBuffer.setUsagePattern( QOpenGLBuffer::StaticDraw );
+    m_vertexBuffer.bind();
+    m_vertexBuffer.allocate( &(*vertices)[0], vertices->size() * sizeof( float ) );
+
+    // Create a buffer and copy the vertex data to it
+    m_normalBuffer.create();
+    m_normalBuffer.setUsagePattern( QOpenGLBuffer::StaticDraw );
+    m_normalBuffer.bind();
+    m_normalBuffer.allocate( &(*normals)[0], normals->size() * sizeof( float ) );
+
+    if(textureUV != 0 && textureUV->size() != 0)
+    {
+        // Create a buffer and copy the vertex data to it
+        m_textureUVBuffer.create();
+        m_textureUVBuffer.setUsagePattern( QOpenGLBuffer::StaticDraw );
+        m_textureUVBuffer.bind();
+        int texSize = 0;
+        for(int ii=0; ii<textureUV->size(); ++ii)
+            texSize += textureUV->at(ii).size();
+
+        m_textureUVBuffer.allocate( &(*textureUV)[0][0], texSize * sizeof( float ) );
+    }
+
+    // Create a buffer and copy the index data to it
+    m_indexBuffer.create();
+    m_indexBuffer.setUsagePattern( QOpenGLBuffer::StaticDraw );
+    m_indexBuffer.bind();
+    m_indexBuffer.allocate( &(*indices)[0], indices->size() * sizeof( unsigned int ) );
+
+    m_rootNode = model4.getNodeData();
+}
+
+void Scene::createBuffers5()
+{
+    ModelLoader model5;
+
+    if(!model5.Load(m_filepath6, m_pathType))
+    {
+        m_error = true;
+        return;
+    }
+
+    QVector<float> *vertices;
+    QVector<float> *normals;
+    QVector<QVector<float> > *textureUV;
+    QVector<unsigned int> *indices;
+
+    model5.getBufferData(&vertices, &normals, &indices);
+    model5.getTextureData(&textureUV, 0, 0);
+
+    // Create a vertex array object
+    m_vao.create();
+    m_vao.bind();
+
+    // Create a buffer and copy the vertex data to it
+    m_vertexBuffer.create();
+    m_vertexBuffer.setUsagePattern( QOpenGLBuffer::StaticDraw );
+    m_vertexBuffer.bind();
+    m_vertexBuffer.allocate( &(*vertices)[0], vertices->size() * sizeof( float ) );
+
+    // Create a buffer and copy the vertex data to it
+    m_normalBuffer.create();
+    m_normalBuffer.setUsagePattern( QOpenGLBuffer::StaticDraw );
+    m_normalBuffer.bind();
+    m_normalBuffer.allocate( &(*normals)[0], normals->size() * sizeof( float ) );
+
+    if(textureUV != 0 && textureUV->size() != 0)
+    {
+        // Create a buffer and copy the vertex data to it
+        m_textureUVBuffer.create();
+        m_textureUVBuffer.setUsagePattern( QOpenGLBuffer::StaticDraw );
+        m_textureUVBuffer.bind();
+        int texSize = 0;
+        for(int ii=0; ii<textureUV->size(); ++ii)
+            texSize += textureUV->at(ii).size();
+
+        m_textureUVBuffer.allocate( &(*textureUV)[0][0], texSize * sizeof( float ) );
+    }
+
+    // Create a buffer and copy the index data to it
+    m_indexBuffer.create();
+    m_indexBuffer.setUsagePattern( QOpenGLBuffer::StaticDraw );
+    m_indexBuffer.bind();
+    m_indexBuffer.allocate( &(*indices)[0], indices->size() * sizeof( unsigned int ) );
+
+    m_rootNode = model5.getNodeData();
+}
+
 void Scene::createAttributes()
 {
     if(m_error)
@@ -213,8 +446,8 @@ void Scene::setupLightingAndMatrices()
 {
     m_view.setToIdentity();
     m_view.lookAt(
-                QVector3D(0.0f, 0.0f, 1.2f),    // Camera Position
-                QVector3D(0.0f, 0.0f, 0.0f),    // Point camera looks towards
+                QVector3D(400.0f, 400.0f, 400.0f),    // Camera Position
+                QVector3D(0.0f, 100.0f, 0.0f),    // Point camera looks towards
                 QVector3D(0.0f, 1.0f, 0.0f));   // Up vector
 
     float aspect = 4.0f/3.0f;
@@ -239,7 +472,7 @@ void Scene::resize(int w, int h)
     glViewport( 0, 0, w, h );
 
     m_projection.setToIdentity();
-    m_projection.perspective(60.0f, (float)w/h, .3f, 1000);
+    m_projection.perspective(60.0f, (float)w/h, .3f, 2000);
 }
 
 void Scene::update()
@@ -254,12 +487,12 @@ void Scene::update()
     m_shaderProgram.bind();
 
     // Set the model matrix
-    // Translate and rotate it a bit to get a better view of the model
+    // Draw the model here, the coordinates of m_model variable is where we draw the robot
     m_model.setToIdentity();
-    m_model.translate(0.0f + float(getTranslationX()) / 100, 0.0f + float(getTranslationY()) / 100, -1.0f + float(getTranslationZ()) / 100);
+    m_model.translate(0.0f + float(getTranslationX()), 0.0f + float(getTranslationY()), -1.0f + float(getTranslationZ()));
     m_model.rotate(float(getRotationX()) - 90.0f, 1.0f, 0.0f, 0.0f);
     m_model.rotate(float(getRotationY()), 0.0f, 1.0f, 0.0f);
-    m_model.rotate(float(getRotationZ()), 0.0f, 0.0f, 1.0f);
+    m_model.rotate(float(getRotationZ()) - 180.0f, 0.0f, 0.0f, 1.0f);
 
     // Set shader uniforms for light information
     m_shaderProgram.setUniformValue( "lightPosition", m_lightInfo.Position );
@@ -270,15 +503,28 @@ void Scene::update()
     createBuffers();
     createAttributes();
     drawNode(m_rootNode.data(), QMatrix4x4());
-    m_model.setToIdentity();
-    m_model.translate(0.0f + float(getTranslationX()) / 100, 1.0f + float(getTranslationY()) / 100, -1.0f + float(getTranslationZ()) / 100);
-    m_model.rotate(float(getRotationX()) - 90.0f, 1.0f, 0.0f, 0.0f);
-    m_model.rotate(float(getRotationY()), 0.0f, 1.0f, 0.0f);
-    m_model.rotate(float(getRotationZ()), 0.0f, 0.0f, 1.0f);
-
-
+//    m_model.setToIdentity();
+//    m_model.translate(0.05f + float(getTranslationX()) / 100, 0.57f + float(getTranslationY()) / 100, -1.0f + float(getTranslationZ()) / 100);
+//    m_model.rotate(float(getRotationX()) - 90.0f, 1.0f, 0.0f, 0.0f);
+//    m_model.rotate(float(getRotationY()) - 90.0f, 0.0f, 1.0f, 0.0f);
+//    m_model.rotate(float(getRotationZ()) + 90.0f, 0.0f, 0.0f, 1.0f);
+    m_model = m_model * h10;
     createBuffers1();
-    createAttributes();
+    drawNode(m_rootNode.data(), QMatrix4x4());
+
+    m_model = m_model * h21;
+    createBuffers2();
+    drawNode(m_rootNode.data(), QMatrix4x4());
+
+    m_model = m_model * h32;
+    createBuffers3();
+    drawNode(m_rootNode.data(), QMatrix4x4());
+
+    m_model = m_model * h43;
+    createBuffers4();
+    drawNode(m_rootNode.data(), QMatrix4x4());
+
+    createBuffers5();
     drawNode(m_rootNode.data(), QMatrix4x4());
     m_vao.release();
 }

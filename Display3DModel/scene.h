@@ -13,7 +13,7 @@
 class Scene : public QOpenGLFunctions_3_3_Core, public SceneBase
 {
 public:
-    Scene(QString filepath, QString filepath2, ModelLoader::PathType pathType, QString texturePath="");
+    Scene(QString filepath, QString filepath2, QString filepath3, QString filepath4, QString filepath5, QString filepath6, ModelLoader::PathType pathType, QString texturePath="");
     void initialize();
     void initialize1();
     void resize(int w, int h);
@@ -24,6 +24,10 @@ private:
     void createShaderProgram( QString vShader, QString fShader);
     void createBuffers();
     void createBuffers1();
+    void createBuffers2();
+    void createBuffers3();
+    void createBuffers4();
+    void createBuffers5();
     void createAttributes();
     void setupLightingAndMatrices();
 
@@ -46,6 +50,10 @@ private:
 
     QString m_filepath;
     QString m_filepath2;
+    QString m_filepath3;
+    QString m_filepath4;
+    QString m_filepath5;
+    QString m_filepath6;
     ModelLoader::PathType m_pathType;
     QString m_texturePath;
 
