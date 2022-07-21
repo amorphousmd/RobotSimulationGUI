@@ -33,6 +33,14 @@ private slots:
 
     void on_pushButton_pressed();
 
+    void on_horizontalSliderJ1_valueChanged(int value);
+
+    void on_horizontalSliderJ2_valueChanged(int value);
+
+    void on_horizontalSliderJ3_valueChanged(int value);
+
+    void on_horizontalSliderJ4_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
 };
@@ -43,5 +51,10 @@ int getRotationZ();
 int getTranslationX();
 int getTranslationY();
 int getTranslationZ();
+int getAngleJ1();
+int getAngleJ2();
+int getAngleJ3();
+int getAngleJ4();
+
 
 #endif // MAINWINDOW_H

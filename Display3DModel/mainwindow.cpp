@@ -15,6 +15,11 @@ int nTranslationZ = 0;
 int nRotationX = 0;
 int nRotationY = 0;
 int nRotationZ = 0;
+int nAngleJ1 = 0;
+int nAngleJ2 = 0;
+int nAngleJ3 = 0;
+int nAngleJ4 = 0;
+
 
 QWidget* MainWindow::getWidgetMain()
 {
@@ -108,4 +113,49 @@ void MainWindow::on_pushButton_pressed()
     QString nameFile(fileInfo.fileName());
     ui->txtFileName->setText(nameFile);
 }
+
+
+void MainWindow::on_horizontalSliderJ1_valueChanged(int value)
+{
+    nAngleJ1 = value;
+}
+
+
+void MainWindow::on_horizontalSliderJ2_valueChanged(int value)
+{
+    nAngleJ2 = value;
+}
+
+
+void MainWindow::on_horizontalSliderJ3_valueChanged(int value)
+{
+    nAngleJ3 = value;
+}
+
+
+void MainWindow::on_horizontalSliderJ4_valueChanged(int value)
+{
+    nAngleJ4 = value;
+}
+
+int getAngleJ1()
+{
+    return nAngleJ1;
+}
+
+int getAngleJ2()
+{
+    return nAngleJ2;
+}
+
+int getAngleJ3()
+{
+    return nAngleJ3;
+}
+
+int getAngleJ4()
+{
+    return nAngleJ4;
+}
+
 

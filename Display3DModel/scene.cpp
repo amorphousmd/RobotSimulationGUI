@@ -2,15 +2,13 @@
 #include "QTime"
 #include "mainwindow.h"
 #include <QDebug>
+#include <QtMath>
 
 QTime prevTime = QTime::currentTime();
 double dRotationX = 0.0f;
 double dRotationY = 0.0f;
 double dRotationZ = 0.0f;
-QMatrix4x4 h10 = QMatrix4x4(0.0f, 0.0f, 1.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 89.06f, 0.0f, 0.0f, 0.0f, 1.0f);
-QMatrix4x4 h21 = QMatrix4x4(-1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, -135.7f, 0.0f, 0.0f, 0.0f, 1.0f);
-QMatrix4x4 h32 = QMatrix4x4(-1.0f, 0.0f, 0.0f, -683.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 130.4f, 0.0f, 0.0f, 0.0f, 1.0f);
-QMatrix4x4 h43 = QMatrix4x4(1.0f, 0.0f, 0.0f, 60.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f);
+
 
 Scene::Scene(QString filepath, QString filepath2, QString filepath3, QString filepath4, QString filepath5, QString filepath6, ModelLoader::PathType pathType, QString texturePath) :
     m_indexBuffer(QOpenGLBuffer::IndexBuffer)
@@ -446,7 +444,7 @@ void Scene::setupLightingAndMatrices()
 {
     m_view.setToIdentity();
     m_view.lookAt(
-                QVector3D(400.0f, 400.0f, 400.0f),    // Camera Position
+                QVector3D(400.0f, 400.0f, 800.0f),    // Camera Position
                 QVector3D(0.0f, 100.0f, 0.0f),    // Point camera looks towards
                 QVector3D(0.0f, 1.0f, 0.0f));   // Up vector
 
@@ -486,10 +484,9 @@ void Scene::update()
     // Bind shader program
     m_shaderProgram.bind();
 
-    // Set the model matrix
     // Draw the model here, the coordinates of m_model variable is where we draw the robot
     m_model.setToIdentity();
-    m_model.translate(0.0f + float(getTranslationX()), 0.0f + float(getTranslationY()), -1.0f + float(getTranslationZ()));
+    m_model.translate(0.0f + float(getTranslationX()) * 3, 0.0f + float(getTranslationY()) * 3, -1.0f + float(getTranslationZ()) * 3);
     m_model.rotate(float(getRotationX()) - 90.0f, 1.0f, 0.0f, 0.0f);
     m_model.rotate(float(getRotationY()), 0.0f, 1.0f, 0.0f);
     m_model.rotate(float(getRotationZ()) - 180.0f, 0.0f, 0.0f, 1.0f);
@@ -503,23 +500,35 @@ void Scene::update()
     createBuffers();
     createAttributes();
     drawNode(m_rootNode.data(), QMatrix4x4());
-//    m_model.setToIdentity();
-//    m_model.translate(0.05f + float(getTranslationX()) / 100, 0.57f + float(getTranslationY()) / 100, -1.0f + float(getTranslationZ()) / 100);
-//    m_model.rotate(float(getRotationX()) - 90.0f, 1.0f, 0.0f, 0.0f);
-//    m_model.rotate(float(getRotationY()) - 90.0f, 0.0f, 1.0f, 0.0f);
-//    m_model.rotate(float(getRotationZ()) + 90.0f, 0.0f, 0.0f, 1.0f);
+
+    QMatrix4x4 h10 = QMatrix4x4(qCos((-90 + getAngleJ1()) * M_PI / 180), 0.0f, qSin((-90 + getAngleJ1()) * M_PI / 180) * -1.0f, 0.0f,
+                                qSin((-90 + getAngleJ1()) * M_PI / 180), 0.0f, -qCos((-90 + getAngleJ1()) * M_PI / 180) * -1.0f, 0.0f,
+                                0.0f, -1.0f, 0.0f, 89.06f,
+                                0.0f, 0.0f, 0.0f, 1.0f);
     m_model = m_model * h10;
     createBuffers1();
     drawNode(m_rootNode.data(), QMatrix4x4());
 
+    QMatrix4x4 h21 = QMatrix4x4(qCos((180 - getAngleJ2()) * M_PI / 180), -qSin((180 - getAngleJ2()) * M_PI / 180) * 1.0f, 0.0f, 0.0f,
+                                qSin((180 - getAngleJ2()) * M_PI / 180), qCos((180 - getAngleJ2()) * M_PI / 180) * 1.0f, 0.0f, 0.0f,
+                                0.0f, 0.0f, 1.0f, -135.7f,
+                                0.0f, 0.0f, 0.0f, 1.0f);
     m_model = m_model * h21;
     createBuffers2();
     drawNode(m_rootNode.data(), QMatrix4x4());
 
+    QMatrix4x4 h32 = QMatrix4x4(qCos((180 - getAngleJ3()) * M_PI / 180), -qSin((180 - getAngleJ3()) * M_PI / 180) * 1.0f, 0.0f, -(300.0f - qCos((180 - getAngleJ3()) * M_PI / 180) * 383),
+                                qSin((180 - getAngleJ3()) * M_PI / 180), qCos((180 - getAngleJ3()) * M_PI / 180) * 1.0f, 0.0f, -(0.0f - qSin((180 - getAngleJ3()) * M_PI / 180) * 383),
+                                0.0f, 0.0f, 1.0f, 130.4f,
+                                0.0f, 0.0f, 0.0f, 1.0f);
     m_model = m_model * h32;
     createBuffers3();
     drawNode(m_rootNode.data(), QMatrix4x4());
 
+    QMatrix4x4 h43 = QMatrix4x4(qCos((0 + getAngleJ4()) * M_PI / 180), -qSin((0 + getAngleJ4()) * M_PI / 180) * -1.0f, 0.0f, -(0.0f - qCos((0 + getAngleJ4()) * M_PI / 180) * 60),
+                                qSin((0 + getAngleJ4()) * M_PI / 180), qCos((0 + getAngleJ4()) * M_PI / 180) * -1.0f, 0.0f, -(0.0f - qSin((0 + getAngleJ4()) * M_PI / 180) * 60),
+                                0.0f, 0.0f, -1.0f, 0.0f,
+                                0.0f, 0.0f, 0.0f, 1.0f);
     m_model = m_model * h43;
     createBuffers4();
     drawNode(m_rootNode.data(), QMatrix4x4());

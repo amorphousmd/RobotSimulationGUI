@@ -43,6 +43,12 @@ public:
     QPushButton *pushButton;
     QTextBrowser *txtFileName;
     QLabel *label_3;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout_5;
+    QSlider *horizontalSliderJ1;
+    QSlider *horizontalSliderJ2;
+    QSlider *horizontalSliderJ3;
+    QSlider *horizontalSliderJ4;
 
     void setupUi(QWidget *MainWindow)
     {
@@ -55,7 +61,7 @@ public:
         widgetMain->setAutoFillBackground(false);
         verticalLayoutWidget_4 = new QWidget(MainWindow);
         verticalLayoutWidget_4->setObjectName(QString::fromUtf8("verticalLayoutWidget_4"));
-        verticalLayoutWidget_4->setGeometry(QRect(940, 120, 211, 391));
+        verticalLayoutWidget_4->setGeometry(QRect(940, 30, 211, 391));
         verticalLayout_4 = new QVBoxLayout(verticalLayoutWidget_4);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
@@ -143,13 +149,51 @@ public:
 
         pushButton = new QPushButton(MainWindow);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(1020, 650, 131, 29));
+        pushButton->setGeometry(QRect(1020, 660, 131, 29));
         txtFileName = new QTextBrowser(MainWindow);
         txtFileName->setObjectName(QString::fromUtf8("txtFileName"));
-        txtFileName->setGeometry(QRect(1020, 610, 131, 31));
+        txtFileName->setGeometry(QRect(1020, 620, 131, 31));
         label_3 = new QLabel(MainWindow);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(940, 620, 81, 20));
+        label_3->setGeometry(QRect(940, 630, 81, 20));
+        verticalLayoutWidget = new QWidget(MainWindow);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(940, 430, 211, 181));
+        verticalLayout_5 = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
+        verticalLayout_5->setContentsMargins(0, 0, 0, 0);
+        horizontalSliderJ1 = new QSlider(verticalLayoutWidget);
+        horizontalSliderJ1->setObjectName(QString::fromUtf8("horizontalSliderJ1"));
+        horizontalSliderJ1->setMinimum(-180);
+        horizontalSliderJ1->setMaximum(180);
+        horizontalSliderJ1->setOrientation(Qt::Horizontal);
+
+        verticalLayout_5->addWidget(horizontalSliderJ1);
+
+        horizontalSliderJ2 = new QSlider(verticalLayoutWidget);
+        horizontalSliderJ2->setObjectName(QString::fromUtf8("horizontalSliderJ2"));
+        horizontalSliderJ2->setMinimum(-180);
+        horizontalSliderJ2->setMaximum(180);
+        horizontalSliderJ2->setOrientation(Qt::Horizontal);
+
+        verticalLayout_5->addWidget(horizontalSliderJ2);
+
+        horizontalSliderJ3 = new QSlider(verticalLayoutWidget);
+        horizontalSliderJ3->setObjectName(QString::fromUtf8("horizontalSliderJ3"));
+        horizontalSliderJ3->setMinimum(-180);
+        horizontalSliderJ3->setMaximum(180);
+        horizontalSliderJ3->setOrientation(Qt::Horizontal);
+
+        verticalLayout_5->addWidget(horizontalSliderJ3);
+
+        horizontalSliderJ4 = new QSlider(verticalLayoutWidget);
+        horizontalSliderJ4->setObjectName(QString::fromUtf8("horizontalSliderJ4"));
+        horizontalSliderJ4->setMinimum(-180);
+        horizontalSliderJ4->setMaximum(180);
+        horizontalSliderJ4->setOrientation(Qt::Horizontal);
+
+        verticalLayout_5->addWidget(horizontalSliderJ4);
+
 
         retranslateUi(MainWindow);
 
