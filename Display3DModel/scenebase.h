@@ -7,6 +7,7 @@ class SceneBase
 {
 public:
     virtual void initialize() = 0;
+    virtual void initialize1() = 0;
     virtual void resize(int w, int h) = 0;
     virtual void update() = 0;
     virtual void cleanup() = 0;
