@@ -37,20 +37,8 @@ void Scene::initialize()
 
     glEnable(GL_DEPTH_TEST);
     glClearColor(.9f, .9f, .93f ,1.0f); // Background color
-}
+    m_vao.create();
 
-void Scene::initialize1() // Consider deleting this, seems redundant
-{
-    this->initializeOpenGLFunctions();
-
-    createShaderProgram(":/ads_fragment.vert", ":/ads_fragment.frag");
-
-    createBuffers1();
-    createAttributes();
-    setupLightingAndMatrices();
-
-    glEnable(GL_DEPTH_TEST);
-    glClearColor(.9f, .9f, .93f ,1.0f); // Background color
 }
 
 void Scene::createShaderProgram(QString vShader, QString fShader)
@@ -87,7 +75,6 @@ void Scene::createBuffers()
     model.getTextureData(&textureUV, 0, 0);
 
     // Create a vertex array object
-    m_vao.create();
     m_vao.bind();
 
     // Create a buffer and copy the vertex data to it
@@ -143,7 +130,6 @@ void Scene::createBuffers1()
     model1.getTextureData(&textureUV, 0, 0);
 
     // Create a vertex array object
-    m_vao.create();
     m_vao.bind();
 
     // Create a buffer and copy the vertex data to it
@@ -199,7 +185,6 @@ void Scene::createBuffers2()
     model2.getTextureData(&textureUV, 0, 0);
 
     // Create a vertex array object
-    m_vao.create();
     m_vao.bind();
 
     // Create a buffer and copy the vertex data to it
@@ -255,7 +240,6 @@ void Scene::createBuffers3()
     model3.getTextureData(&textureUV, 0, 0);
 
     // Create a vertex array object
-    m_vao.create();
     m_vao.bind();
 
     // Create a buffer and copy the vertex data to it
@@ -311,7 +295,6 @@ void Scene::createBuffers4()
     model4.getTextureData(&textureUV, 0, 0);
 
     // Create a vertex array object
-    m_vao.create();
     m_vao.bind();
 
     // Create a buffer and copy the vertex data to it
@@ -367,7 +350,6 @@ void Scene::createBuffers5()
     model5.getTextureData(&textureUV, 0, 0);
 
     // Create a vertex array object
-    m_vao.create();
     m_vao.bind();
 
     // Create a buffer and copy the vertex data to it
@@ -509,16 +491,16 @@ void Scene::update()
     createBuffers1();
     drawNode(m_rootNode.data(), QMatrix4x4());
 
-    QMatrix4x4 h21 = QMatrix4x4(qCos((180 - getAngleJ2()) * M_PI / 180), -qSin((180 - getAngleJ2()) * M_PI / 180) * 1.0f, 0.0f, 0.0f,
-                                qSin((180 - getAngleJ2()) * M_PI / 180), qCos((180 - getAngleJ2()) * M_PI / 180) * 1.0f, 0.0f, 0.0f,
+    QMatrix4x4 h21 = QMatrix4x4(qCos((180 + getAngleJ2()) * M_PI / 180), -qSin((180 + getAngleJ2()) * M_PI / 180) * 1.0f, 0.0f, 0.0f,
+                                qSin((180 + getAngleJ2()) * M_PI / 180), qCos((180 + getAngleJ2()) * M_PI / 180) * 1.0f, 0.0f, 0.0f,
                                 0.0f, 0.0f, 1.0f, -135.7f,
                                 0.0f, 0.0f, 0.0f, 1.0f);
     m_model = m_model * h21;
     createBuffers2();
     drawNode(m_rootNode.data(), QMatrix4x4());
 
-    QMatrix4x4 h32 = QMatrix4x4(qCos((180 - getAngleJ3()) * M_PI / 180), -qSin((180 - getAngleJ3()) * M_PI / 180) * 1.0f, 0.0f, -(300.0f - qCos((180 - getAngleJ3()) * M_PI / 180) * 383),
-                                qSin((180 - getAngleJ3()) * M_PI / 180), qCos((180 - getAngleJ3()) * M_PI / 180) * 1.0f, 0.0f, -(0.0f - qSin((180 - getAngleJ3()) * M_PI / 180) * 383),
+    QMatrix4x4 h32 = QMatrix4x4(qCos((180 + getAngleJ3()) * M_PI / 180), -qSin((180 + getAngleJ3()) * M_PI / 180) * 1.0f, 0.0f, -(300.0f - qCos((180 + getAngleJ3()) * M_PI / 180) * 383),
+                                qSin((180 + getAngleJ3()) * M_PI / 180), qCos((180 + getAngleJ3()) * M_PI / 180) * 1.0f, 0.0f, -(0.0f - qSin((180 + getAngleJ3()) * M_PI / 180) * 383),
                                 0.0f, 0.0f, 1.0f, 130.4f,
                                 0.0f, 0.0f, 0.0f, 1.0f);
     m_model = m_model * h32;

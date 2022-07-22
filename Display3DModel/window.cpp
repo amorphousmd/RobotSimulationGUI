@@ -70,13 +70,6 @@ void OpenGLWindow::initializeGL()
     m_scene->initialize();
 }
 
-void OpenGLWindow::initializeGL1()
-{
-    m_context->makeCurrent( this );
-
-    m_scene->initialize1();
-}
-
 void OpenGLWindow::updateGL()
 {
     if(!isExposed())

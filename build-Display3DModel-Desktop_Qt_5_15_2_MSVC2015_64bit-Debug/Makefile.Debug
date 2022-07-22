@@ -1128,7 +1128,10 @@ debug\scene.obj: ..\Display3DModel\scene.cpp ..\Display3DModel\scene.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qurlquery.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtouchdevice.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtabwidget.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qicon.h
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qicon.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QDebug \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QtMath \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qmath.h
 
 debug\modelloader.obj: ..\Display3DModel\modelloader.cpp ..\Display3DModel\modelloader.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QMatrix4x4 \
