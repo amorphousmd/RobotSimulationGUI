@@ -42,18 +42,21 @@ MainWindow::~MainWindow()
 void MainWindow::on_verticalSlider_Roll_valueChanged(int value)
 {
     nRotationX = value;
+    ui->lnERotX->setText(QString::number(value));
 }
 
 
 void MainWindow::on_verticalSlider_Pitch_valueChanged(int value)
 {
     nRotationY = value;
+    ui->lnERotY->setText(QString::number(value));
 }
 
 
 void MainWindow::on_verticalSlider_Yaw_valueChanged(int value)
 {
     nRotationZ = value;
+    ui->lnERotZ->setText(QString::number(value));
 }
 
 
@@ -75,18 +78,21 @@ int getRotationZ()
 void MainWindow::on_verticalSlider_transX_valueChanged(int value)
 {
     nTranslationX = value;
+    ui->lnETransX->setText(QString::number(value));
 }
 
 
 void MainWindow::on_verticalSlider_transY_valueChanged(int value)
 {
     nTranslationY = value;
+    ui->lnETransY->setText(QString::number(value));
 }
 
 
 void MainWindow::on_verticalSlider_transZ_valueChanged(int value)
 {
     nTranslationZ = value;
+    ui->lnETransZ->setText(QString::number(value));
 }
 
 int getTranslationX()
@@ -105,37 +111,33 @@ int getTranslationZ()
 }
 
 
-void MainWindow::on_pushButton_pressed()
-{
-    QString filename= QFileDialog::getOpenFileName(this, "Choose File");
-    QFile f(filename);
-    QFileInfo fileInfo(f.fileName());
-    QString nameFile(fileInfo.fileName());
-    ui->txtFileName->setText(nameFile);
-}
 
 
 void MainWindow::on_horizontalSliderJ1_valueChanged(int value)
 {
     nAngleJ1 = value;
+    ui->lnEJoint1->setText(QString::number(value));
 }
 
 
 void MainWindow::on_horizontalSliderJ2_valueChanged(int value)
 {
     nAngleJ2 = value;
+    ui->lnEJoint2->setText(QString::number(value));
 }
 
 
 void MainWindow::on_horizontalSliderJ3_valueChanged(int value)
 {
     nAngleJ3 = value;
+    ui->lnEJoint3->setText(QString::number(value));
 }
 
 
 void MainWindow::on_horizontalSliderJ4_valueChanged(int value)
 {
     nAngleJ4 = value;
+    ui->lnEJoint4->setText(QString::number(value));
 }
 
 int getAngleJ1()
@@ -158,4 +160,64 @@ int getAngleJ4()
     return nAngleJ4;
 }
 
+
+
+void MainWindow::on_lnETransX_textChanged(const QString &arg1)
+{
+    ui->verticalSlider_transX->setValue(arg1.toInt());
+}
+
+
+void MainWindow::on_lnETransY_textChanged(const QString &arg1)
+{
+    ui->verticalSlider_transY->setValue(arg1.toInt());
+}
+
+
+void MainWindow::on_lnETransZ_textChanged(const QString &arg1)
+{
+    ui->verticalSlider_transZ->setValue(arg1.toInt());
+}
+
+
+void MainWindow::on_lnERotX_textChanged(const QString &arg1)
+{
+    ui->verticalSlider_Roll->setValue(arg1.toInt());
+}
+
+
+void MainWindow::on_lnERotY_textChanged(const QString &arg1)
+{
+    ui->verticalSlider_Pitch->setValue(arg1.toInt());
+}
+
+
+void MainWindow::on_lnERotZ_textChanged(const QString &arg1)
+{
+    ui->verticalSlider_Yaw->setValue(arg1.toInt());
+}
+
+
+void MainWindow::on_lnEJoint1_textChanged(const QString &arg1)
+{
+    ui->horizontalSliderJ1->setValue(arg1.toInt());
+}
+
+
+void MainWindow::on_lnEJoint2_textChanged(const QString &arg1)
+{
+    ui->horizontalSliderJ2->setValue(arg1.toInt());
+}
+
+
+void MainWindow::on_lnEJoint3_textChanged(const QString &arg1)
+{
+    ui->horizontalSliderJ3->setValue(arg1.toInt());
+}
+
+
+void MainWindow::on_lnEJoint4_textChanged(const QString &arg1)
+{
+    ui->horizontalSliderJ4->setValue(arg1.toInt());
+}
 

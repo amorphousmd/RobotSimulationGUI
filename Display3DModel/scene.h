@@ -10,6 +10,7 @@
 #include "modelloader.h"
 #include "scenebase.h"
 
+
 class Scene : public QOpenGLFunctions_3_3_Core, public SceneBase
 {
 public:
@@ -61,5 +62,8 @@ private:
 
     bool m_error;
 };
+
+QMatrix4x4 calculateDHMatrix(float theta, float alpha, float r, float d);
+
 
 #endif // SCENE_H

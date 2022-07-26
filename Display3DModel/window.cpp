@@ -44,7 +44,6 @@ OpenGLWindow::OpenGLWindow( SceneSelector *sceneSelector, int refreshRate, int m
 
     setSurfaceType(OpenGLSurface);
     setFormat( m_context->format() );
-    //resize( 800, 600 );
     create();
     connect( this, SIGNAL( widthChanged(int) ), this, SLOT( resizeGL() ) );
     connect( this, SIGNAL( heightChanged(int) ), this, SLOT( resizeGL() ) );

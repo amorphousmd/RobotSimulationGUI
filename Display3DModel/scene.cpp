@@ -4,11 +4,81 @@
 #include <QDebug>
 #include <QtMath>
 
-QTime prevTime = QTime::currentTime();
 double dRotationX = 0.0f;
 double dRotationY = 0.0f;
 double dRotationZ = 0.0f;
+float fTranslationXE = 0.0f;
+float fTranslationYE = 0.0f;
+float fTranslationZE = 0.0f;
+float fRollAngleE = 0.0f;
+float fPitchAngleE = 0.0f;
+float fYawAngleE = 0.0f;
 
+float getTranslationXEffector()
+{
+    return fTranslationXE;
+}
+
+float getTranslationYEffector()
+{
+    return fTranslationXE;
+}
+
+float getTranslationZEffector()
+{
+    return fTranslationXE;
+}
+
+float getRollAngleE()
+{
+    return fRollAngleE;
+}
+
+float getPitchAngleE()
+{
+    return fPitchAngleE;
+}
+
+float getYawAngleE()
+{
+    return fYawAngleE;
+}
+
+//QMatrix4x4 calculateXRotationMatrix(float theta)
+//{
+//    QMatrix4x4 matrix = QMatrix4x4(1, 0, 0, 0,
+//                                   0, qCos(theta * M_PI / 180), -qSin(theta * M_PI / 180), 0,
+//                                   0, qSin(theta* M_PI / 180), qCos(theta* M_PI / 180), 0,
+//                                   0, 0, 0, 1);
+//    return matrix;
+//}
+
+//QMatrix4x4 calculateYRotationMatrix(float theta)
+//{
+//    QMatrix4x4 matrix = QMatrix4x4( qCos(theta * M_PI / 180), 0, qSin(theta * M_PI / 180), 0,
+//                                   0, 1, 0, 0,
+//                                   -qSin(theta * M_PI / 180), 0, qCos(theta* M_PI / 180), 0,
+//                                   0, 0, 0, 1);
+//    return matrix;
+//}
+
+QMatrix4x4 calculateZRotationMatrix(float theta)
+{
+    QMatrix4x4 matrix = QMatrix4x4(qCos(theta * M_PI / 180), -qSin(theta * M_PI / 180), 0, 0,
+                                   qSin(theta * M_PI / 180), qCos(theta * M_PI / 180), 0, 0,
+                                   0, 0, 1, 0,
+                                   0, 0, 0, 1);
+    return matrix;
+}
+
+QMatrix4x4 calculateDHMatrix(float theta, float alpha, float r, float d)
+{
+    QMatrix4x4 matrix = QMatrix4x4(qCos(theta * M_PI / 180), -qSin(theta * M_PI / 180) * qCos(alpha * M_PI / 180), qSin(theta * M_PI / 180) * qSin(alpha * M_PI / 180), r * qCos(theta * M_PI / 180),
+                                   qSin(theta * M_PI / 180), qCos(theta * M_PI / 180) * qCos(alpha * M_PI / 180), -qCos(theta * M_PI / 180) * qSin(alpha * M_PI / 180), r * qSin(theta * M_PI / 180),
+                                   0, qSin(alpha* M_PI / 180), qCos(alpha* M_PI / 180), d,
+                                   0, 0, 0, 1);
+    return matrix;
+}
 
 Scene::Scene(QString filepath, QString filepath2, QString filepath3, QString filepath4, QString filepath5, QString filepath6, ModelLoader::PathType pathType, QString texturePath) :
     m_indexBuffer(QOpenGLBuffer::IndexBuffer)
@@ -426,7 +496,7 @@ void Scene::setupLightingAndMatrices()
 {
     m_view.setToIdentity();
     m_view.lookAt(
-                QVector3D(400.0f, 400.0f, 800.0f),    // Camera Position
+                QVector3D(400.0f, 400.0f, 200.0f),    // Camera Position
                 QVector3D(0.0f, 100.0f, 0.0f),    // Point camera looks towards
                 QVector3D(0.0f, 1.0f, 0.0f));   // Up vector
 
@@ -468,7 +538,7 @@ void Scene::update()
 
     // Draw the model here, the coordinates of m_model variable is where we draw the robot
     m_model.setToIdentity();
-    m_model.translate(0.0f + float(getTranslationX()) * 3, 0.0f + float(getTranslationY()) * 3, -1.0f + float(getTranslationZ()) * 3);
+    m_model.translate(0.0f + float(getTranslationX()) * 3, 0.0f + float(getTranslationY()) * 3, float(getTranslationZ()) * 3);
     m_model.rotate(float(getRotationX()) - 90.0f, 1.0f, 0.0f, 0.0f);
     m_model.rotate(float(getRotationY()), 0.0f, 1.0f, 0.0f);
     m_model.rotate(float(getRotationZ()) - 180.0f, 0.0f, 0.0f, 1.0f);
@@ -482,41 +552,55 @@ void Scene::update()
     createBuffers();
     createAttributes();
     drawNode(m_rootNode.data(), QMatrix4x4());
+    qDebug() << m_model;
+    QMatrix4x4 reframeMatrixBase = QMatrix4x4(1.0f, 0.0f, 0.0f, 0.0f,
+                                          0.0f, 1.0f, 0.0f, 0.0f,
+                                          0.0f, 0.0f, 1.0f, 24.0f,
+                                          0.0f, 0.0f, 0.0f, 1.0f);
+    QMatrix4x4 baseMatrix = m_model * reframeMatrixBase;
+    QMatrix4x4 effectorCMatrix = baseMatrix.inverted();
 
-    QMatrix4x4 h10 = QMatrix4x4(qCos((-90 + getAngleJ1()) * M_PI / 180), 0.0f, qSin((-90 + getAngleJ1()) * M_PI / 180) * -1.0f, 0.0f,
-                                qSin((-90 + getAngleJ1()) * M_PI / 180), 0.0f, -qCos((-90 + getAngleJ1()) * M_PI / 180) * -1.0f, 0.0f,
-                                0.0f, -1.0f, 0.0f, 89.06f,
-                                0.0f, 0.0f, 0.0f, 1.0f);
-    m_model = m_model * h10;
-    createBuffers1();
+    QMatrix4x4 frameMatrix1 = baseMatrix;
+    QMatrix4x4 frameMatrix1draw = frameMatrix1 * calculateZRotationMatrix(getAngleJ1());
+    m_model = frameMatrix1draw * calculateDHMatrix(0.0f, -90.0f , 0.0f, 65.2f);
+    createBuffers1(); 
     drawNode(m_rootNode.data(), QMatrix4x4());
 
-    QMatrix4x4 h21 = QMatrix4x4(qCos((180 + getAngleJ2()) * M_PI / 180), -qSin((180 + getAngleJ2()) * M_PI / 180) * 1.0f, 0.0f, 0.0f,
-                                qSin((180 + getAngleJ2()) * M_PI / 180), qCos((180 + getAngleJ2()) * M_PI / 180) * 1.0f, 0.0f, 0.0f,
-                                0.0f, 0.0f, 1.0f, -135.7f,
-                                0.0f, 0.0f, 0.0f, 1.0f);
-    m_model = m_model * h21;
+    
+    QMatrix4x4 frameMatrix2 = frameMatrix1 * calculateDHMatrix(getAngleJ1(), 90.0f, 0.0f, 65.2f);
+    QMatrix4x4 frameMatrix2draw = frameMatrix2 * calculateZRotationMatrix(getAngleJ2());
+    m_model = frameMatrix2draw * calculateDHMatrix(180.0f, 180.0f , 0.0f, 135.7f);
     createBuffers2();
     drawNode(m_rootNode.data(), QMatrix4x4());
 
-    QMatrix4x4 h32 = QMatrix4x4(qCos((180 + getAngleJ3()) * M_PI / 180), -qSin((180 + getAngleJ3()) * M_PI / 180) * 1.0f, 0.0f, -(300.0f - qCos((180 + getAngleJ3()) * M_PI / 180) * 383),
-                                qSin((180 + getAngleJ3()) * M_PI / 180), qCos((180 + getAngleJ3()) * M_PI / 180) * 1.0f, 0.0f, -(0.0f - qSin((180 + getAngleJ3()) * M_PI / 180) * 383),
-                                0.0f, 0.0f, 1.0f, 130.4f,
-                                0.0f, 0.0f, 0.0f, 1.0f);
-    m_model = m_model * h32;
+    QMatrix4x4 frameMatrix3 = frameMatrix2 * calculateDHMatrix(getAngleJ2(), 0.0f, 300.0f, 0.0f);
+    QMatrix4x4 frameMatrix3draw = frameMatrix3 * calculateZRotationMatrix(getAngleJ3());
+    m_model = frameMatrix3draw * calculateDHMatrix(0.0f, 180.0f , 383.0f, 4.8f);
     createBuffers3();
     drawNode(m_rootNode.data(), QMatrix4x4());
 
-    QMatrix4x4 h43 = QMatrix4x4(qCos((0 + getAngleJ4()) * M_PI / 180), -qSin((0 + getAngleJ4()) * M_PI / 180) * -1.0f, 0.0f, -(0.0f - qCos((0 + getAngleJ4()) * M_PI / 180) * 60),
-                                qSin((0 + getAngleJ4()) * M_PI / 180), qCos((0 + getAngleJ4()) * M_PI / 180) * -1.0f, 0.0f, -(0.0f - qSin((0 + getAngleJ4()) * M_PI / 180) * 60),
-                                0.0f, 0.0f, -1.0f, 0.0f,
-                                0.0f, 0.0f, 0.0f, 1.0f);
-    m_model = m_model * h43;
+    QMatrix4x4 frameMatrix4 = frameMatrix3 * calculateDHMatrix(getAngleJ3(), 0.0f, 383.0f, 0.0f);
+    QMatrix4x4 frameMatrix4draw = frameMatrix4 * calculateZRotationMatrix(getAngleJ4());
+    m_model = frameMatrix4draw * calculateDHMatrix(0.0f, 0.0f , 60.0f, 4.8f);
     createBuffers4();
     drawNode(m_rootNode.data(), QMatrix4x4());
 
+    QMatrix4x4 endEffectorMatrix = frameMatrix4draw * calculateDHMatrix(0.0f, 0.0f, 33.0f, 0.0f);
     createBuffers5();
     drawNode(m_rootNode.data(), QMatrix4x4());
+
+    QMatrix4x4 effectorMatrix = effectorCMatrix * endEffectorMatrix;
+    float* pEffector = effectorMatrix.data();
+    float yaw = qAtan2(*(pEffector + 1), *pEffector);
+    float pitch = qAtan2(-*(pEffector + 2), qSqrt(*(pEffector + 6) * *(pEffector + 6) + *(pEffector + 10) * *(pEffector + 10)));
+    float roll = qAtan2(*(pEffector + 6), *(pEffector + 10));
+    qDebug() << *(pEffector + 12);
+    qDebug() << *(pEffector + 13);
+    qDebug() << *(pEffector + 14);
+    qDebug() << roll * 180 / M_PI;
+    qDebug() << pitch * 180 / M_PI;
+    qDebug() << yaw * 180 / M_PI;
+
     m_vao.release();
 }
 

@@ -31,8 +31,6 @@ private slots:
 
     void on_verticalSlider_transZ_valueChanged(int value);
 
-    void on_pushButton_pressed();
-
     void on_horizontalSliderJ1_valueChanged(int value);
 
     void on_horizontalSliderJ2_valueChanged(int value);
@@ -40,6 +38,26 @@ private slots:
     void on_horizontalSliderJ3_valueChanged(int value);
 
     void on_horizontalSliderJ4_valueChanged(int value);
+
+    void on_lnETransX_textChanged(const QString &arg1);
+
+    void on_lnETransY_textChanged(const QString &arg1);
+
+    void on_lnETransZ_textChanged(const QString &arg1);
+
+    void on_lnERotX_textChanged(const QString &arg1);
+
+    void on_lnERotY_textChanged(const QString &arg1);
+
+    void on_lnERotZ_textChanged(const QString &arg1);
+
+    void on_lnEJoint1_textChanged(const QString &arg1);
+
+    void on_lnEJoint2_textChanged(const QString &arg1);
+
+    void on_lnEJoint3_textChanged(const QString &arg1);
+
+    void on_lnEJoint4_textChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;
