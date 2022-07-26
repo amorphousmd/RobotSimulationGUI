@@ -28,13 +28,6 @@ public:
     QWidget *widgetMain;
     QTabWidget *tabWidget;
     QWidget *tab;
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout_4;
-    QLineEdit *lnEJoint1;
-    QLineEdit *lnEJoint2;
-    QLineEdit *lnEJoint3;
-    QLineEdit *lnEJoint4;
-    QLabel *label_4;
     QWidget *horizontalLayoutWidget_5;
     QHBoxLayout *horizontalLayout_8;
     QSpacerItem *horizontalSpacer_3;
@@ -58,6 +51,39 @@ public:
     QSlider *verticalSlider_Roll;
     QSlider *verticalSlider_Pitch;
     QSlider *verticalSlider_Yaw;
+    QWidget *horizontalLayoutWidget_6;
+    QHBoxLayout *horizontalLayout_9;
+    QSpacerItem *horizontalSpacer_5;
+    QLineEdit *lnERotX;
+    QSpacerItem *horizontalSpacer_6;
+    QLineEdit *lnERotY;
+    QSpacerItem *horizontalSpacer_7;
+    QLineEdit *lnERotZ;
+    QSpacerItem *horizontalSpacer_8;
+    QWidget *tab_2;
+    QWidget *verticalLayoutWidget_3;
+    QVBoxLayout *verticalLayout_6;
+    QLineEdit *lnEEffectorX;
+    QLineEdit *lnEEffectorY;
+    QLineEdit *lnEEffectorZ;
+    QLineEdit *lnEEffectorRoll;
+    QLineEdit *lnEEffectorPitch;
+    QLineEdit *lnEEffectorYaw;
+    QWidget *verticalLayoutWidget_4;
+    QVBoxLayout *verticalLayout_7;
+    QLabel *label_3;
+    QLabel *label_9;
+    QLabel *label_10;
+    QLabel *label_11;
+    QLabel *label_12;
+    QLabel *label_13;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout_4;
+    QLineEdit *lnEJoint1;
+    QLineEdit *lnEJoint2;
+    QLineEdit *lnEJoint3;
+    QLineEdit *lnEJoint4;
+    QLabel *label_4;
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_3;
@@ -72,16 +98,6 @@ public:
     QHBoxLayout *horizontalLayout_7;
     QLabel *label_8;
     QSlider *horizontalSliderJ4;
-    QWidget *horizontalLayoutWidget_6;
-    QHBoxLayout *horizontalLayout_9;
-    QSpacerItem *horizontalSpacer_5;
-    QLineEdit *lnERotX;
-    QSpacerItem *horizontalSpacer_6;
-    QLineEdit *lnERotY;
-    QSpacerItem *horizontalSpacer_7;
-    QLineEdit *lnERotZ;
-    QSpacerItem *horizontalSpacer_8;
-    QWidget *tab_2;
 
     void setupUi(QWidget *MainWindow)
     {
@@ -102,42 +118,9 @@ public:
         tabWidget->setGeometry(QRect(960, 0, 351, 721));
         tab = new QWidget();
         tab->setObjectName(QString::fromUtf8("tab"));
-        verticalLayoutWidget = new QWidget(tab);
-        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(270, 470, 61, 171));
-        verticalLayout_4 = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        verticalLayout_4->setContentsMargins(0, 0, 0, 0);
-        lnEJoint1 = new QLineEdit(verticalLayoutWidget);
-        lnEJoint1->setObjectName(QString::fromUtf8("lnEJoint1"));
-        lnEJoint1->setAlignment(Qt::AlignCenter);
-
-        verticalLayout_4->addWidget(lnEJoint1);
-
-        lnEJoint2 = new QLineEdit(verticalLayoutWidget);
-        lnEJoint2->setObjectName(QString::fromUtf8("lnEJoint2"));
-        lnEJoint2->setAlignment(Qt::AlignCenter);
-
-        verticalLayout_4->addWidget(lnEJoint2);
-
-        lnEJoint3 = new QLineEdit(verticalLayoutWidget);
-        lnEJoint3->setObjectName(QString::fromUtf8("lnEJoint3"));
-        lnEJoint3->setAlignment(Qt::AlignCenter);
-
-        verticalLayout_4->addWidget(lnEJoint3);
-
-        lnEJoint4 = new QLineEdit(verticalLayoutWidget);
-        lnEJoint4->setObjectName(QString::fromUtf8("lnEJoint4"));
-        lnEJoint4->setAlignment(Qt::AlignCenter);
-
-        verticalLayout_4->addWidget(lnEJoint4);
-
-        label_4 = new QLabel(tab);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(120, 440, 91, 20));
         horizontalLayoutWidget_5 = new QWidget(tab);
         horizontalLayoutWidget_5->setObjectName(QString::fromUtf8("horizontalLayoutWidget_5"));
-        horizontalLayoutWidget_5->setGeometry(QRect(10, 160, 321, 31));
+        horizontalLayoutWidget_5->setGeometry(QRect(10, 250, 321, 31));
         horizontalLayout_8 = new QHBoxLayout(horizontalLayoutWidget_5);
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
         horizontalLayout_8->setContentsMargins(0, 0, 0, 0);
@@ -177,7 +160,7 @@ public:
 
         widget = new QWidget(tab);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(10, -20, 321, 171));
+        widget->setGeometry(QRect(10, 70, 321, 171));
         verticalLayout_3 = new QVBoxLayout(widget);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -218,7 +201,7 @@ public:
 
         widget1 = new QWidget(tab);
         widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(10, 210, 321, 171));
+        widget1->setGeometry(QRect(10, 300, 321, 171));
         verticalLayout = new QVBoxLayout(widget1);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -254,9 +237,157 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
-        verticalLayoutWidget_2 = new QWidget(tab);
+        horizontalLayoutWidget_6 = new QWidget(tab);
+        horizontalLayoutWidget_6->setObjectName(QString::fromUtf8("horizontalLayoutWidget_6"));
+        horizontalLayoutWidget_6->setGeometry(QRect(10, 480, 321, 31));
+        horizontalLayout_9 = new QHBoxLayout(horizontalLayoutWidget_6);
+        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
+        horizontalLayout_9->setContentsMargins(0, 0, 0, 0);
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_9->addItem(horizontalSpacer_5);
+
+        lnERotX = new QLineEdit(horizontalLayoutWidget_6);
+        lnERotX->setObjectName(QString::fromUtf8("lnERotX"));
+        lnERotX->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_9->addWidget(lnERotX);
+
+        horizontalSpacer_6 = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_9->addItem(horizontalSpacer_6);
+
+        lnERotY = new QLineEdit(horizontalLayoutWidget_6);
+        lnERotY->setObjectName(QString::fromUtf8("lnERotY"));
+        lnERotY->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_9->addWidget(lnERotY);
+
+        horizontalSpacer_7 = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_9->addItem(horizontalSpacer_7);
+
+        lnERotZ = new QLineEdit(horizontalLayoutWidget_6);
+        lnERotZ->setObjectName(QString::fromUtf8("lnERotZ"));
+        lnERotZ->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_9->addWidget(lnERotZ);
+
+        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_9->addItem(horizontalSpacer_8);
+
+        tabWidget->addTab(tab, QString());
+        tab_2 = new QWidget();
+        tab_2->setObjectName(QString::fromUtf8("tab_2"));
+        verticalLayoutWidget_3 = new QWidget(tab_2);
+        verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
+        verticalLayoutWidget_3->setGeometry(QRect(90, 0, 141, 381));
+        verticalLayout_6 = new QVBoxLayout(verticalLayoutWidget_3);
+        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
+        verticalLayout_6->setContentsMargins(0, 0, 0, 0);
+        lnEEffectorX = new QLineEdit(verticalLayoutWidget_3);
+        lnEEffectorX->setObjectName(QString::fromUtf8("lnEEffectorX"));
+
+        verticalLayout_6->addWidget(lnEEffectorX);
+
+        lnEEffectorY = new QLineEdit(verticalLayoutWidget_3);
+        lnEEffectorY->setObjectName(QString::fromUtf8("lnEEffectorY"));
+
+        verticalLayout_6->addWidget(lnEEffectorY);
+
+        lnEEffectorZ = new QLineEdit(verticalLayoutWidget_3);
+        lnEEffectorZ->setObjectName(QString::fromUtf8("lnEEffectorZ"));
+
+        verticalLayout_6->addWidget(lnEEffectorZ);
+
+        lnEEffectorRoll = new QLineEdit(verticalLayoutWidget_3);
+        lnEEffectorRoll->setObjectName(QString::fromUtf8("lnEEffectorRoll"));
+
+        verticalLayout_6->addWidget(lnEEffectorRoll);
+
+        lnEEffectorPitch = new QLineEdit(verticalLayoutWidget_3);
+        lnEEffectorPitch->setObjectName(QString::fromUtf8("lnEEffectorPitch"));
+
+        verticalLayout_6->addWidget(lnEEffectorPitch);
+
+        lnEEffectorYaw = new QLineEdit(verticalLayoutWidget_3);
+        lnEEffectorYaw->setObjectName(QString::fromUtf8("lnEEffectorYaw"));
+
+        verticalLayout_6->addWidget(lnEEffectorYaw);
+
+        verticalLayoutWidget_4 = new QWidget(tab_2);
+        verticalLayoutWidget_4->setObjectName(QString::fromUtf8("verticalLayoutWidget_4"));
+        verticalLayoutWidget_4->setGeometry(QRect(20, 20, 61, 341));
+        verticalLayout_7 = new QVBoxLayout(verticalLayoutWidget_4);
+        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
+        verticalLayout_7->setContentsMargins(0, 0, 0, 0);
+        label_3 = new QLabel(verticalLayoutWidget_4);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+
+        verticalLayout_7->addWidget(label_3);
+
+        label_9 = new QLabel(verticalLayoutWidget_4);
+        label_9->setObjectName(QString::fromUtf8("label_9"));
+
+        verticalLayout_7->addWidget(label_9);
+
+        label_10 = new QLabel(verticalLayoutWidget_4);
+        label_10->setObjectName(QString::fromUtf8("label_10"));
+
+        verticalLayout_7->addWidget(label_10);
+
+        label_11 = new QLabel(verticalLayoutWidget_4);
+        label_11->setObjectName(QString::fromUtf8("label_11"));
+
+        verticalLayout_7->addWidget(label_11);
+
+        label_12 = new QLabel(verticalLayoutWidget_4);
+        label_12->setObjectName(QString::fromUtf8("label_12"));
+
+        verticalLayout_7->addWidget(label_12);
+
+        label_13 = new QLabel(verticalLayoutWidget_4);
+        label_13->setObjectName(QString::fromUtf8("label_13"));
+
+        verticalLayout_7->addWidget(label_13);
+
+        verticalLayoutWidget = new QWidget(tab_2);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(270, 420, 76, 171));
+        verticalLayout_4 = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        verticalLayout_4->setContentsMargins(0, 0, 0, 0);
+        lnEJoint1 = new QLineEdit(verticalLayoutWidget);
+        lnEJoint1->setObjectName(QString::fromUtf8("lnEJoint1"));
+        lnEJoint1->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_4->addWidget(lnEJoint1);
+
+        lnEJoint2 = new QLineEdit(verticalLayoutWidget);
+        lnEJoint2->setObjectName(QString::fromUtf8("lnEJoint2"));
+        lnEJoint2->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_4->addWidget(lnEJoint2);
+
+        lnEJoint3 = new QLineEdit(verticalLayoutWidget);
+        lnEJoint3->setObjectName(QString::fromUtf8("lnEJoint3"));
+        lnEJoint3->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_4->addWidget(lnEJoint3);
+
+        lnEJoint4 = new QLineEdit(verticalLayoutWidget);
+        lnEJoint4->setObjectName(QString::fromUtf8("lnEJoint4"));
+        lnEJoint4->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_4->addWidget(lnEJoint4);
+
+        label_4 = new QLabel(tab_2);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setGeometry(QRect(120, 390, 91, 20));
+        verticalLayoutWidget_2 = new QWidget(tab_2);
         verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(10, 470, 251, 171));
+        verticalLayoutWidget_2->setGeometry(QRect(10, 420, 251, 171));
         verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -332,54 +463,11 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_7);
 
-        horizontalLayoutWidget_6 = new QWidget(tab);
-        horizontalLayoutWidget_6->setObjectName(QString::fromUtf8("horizontalLayoutWidget_6"));
-        horizontalLayoutWidget_6->setGeometry(QRect(10, 390, 321, 31));
-        horizontalLayout_9 = new QHBoxLayout(horizontalLayoutWidget_6);
-        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
-        horizontalLayout_9->setContentsMargins(0, 0, 0, 0);
-        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        horizontalLayout_9->addItem(horizontalSpacer_5);
-
-        lnERotX = new QLineEdit(horizontalLayoutWidget_6);
-        lnERotX->setObjectName(QString::fromUtf8("lnERotX"));
-        lnERotX->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_9->addWidget(lnERotX);
-
-        horizontalSpacer_6 = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        horizontalLayout_9->addItem(horizontalSpacer_6);
-
-        lnERotY = new QLineEdit(horizontalLayoutWidget_6);
-        lnERotY->setObjectName(QString::fromUtf8("lnERotY"));
-        lnERotY->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_9->addWidget(lnERotY);
-
-        horizontalSpacer_7 = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        horizontalLayout_9->addItem(horizontalSpacer_7);
-
-        lnERotZ = new QLineEdit(horizontalLayoutWidget_6);
-        lnERotZ->setObjectName(QString::fromUtf8("lnERotZ"));
-        lnERotZ->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_9->addWidget(lnERotZ);
-
-        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        horizontalLayout_9->addItem(horizontalSpacer_8);
-
-        tabWidget->addTab(tab, QString());
-        tab_2 = new QWidget();
-        tab_2->setObjectName(QString::fromUtf8("tab_2"));
         tabWidget->addTab(tab_2, QString());
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -388,25 +476,31 @@ public:
     void retranslateUi(QWidget *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "RobotSimulation", nullptr));
-        lnEJoint1->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        lnEJoint2->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        lnEJoint3->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        lnEJoint4->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        label_4->setText(QCoreApplication::translate("MainWindow", "Joint Control", nullptr));
         lnETransX->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         lnETransY->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         lnETransZ->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Translation Control", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Rotation Control", nullptr));
+        lnERotX->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        lnERotY->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        lnERotZ->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "Scene Control", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
+        label_9->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
+        label_10->setText(QCoreApplication::translate("MainWindow", "Z", nullptr));
+        label_11->setText(QCoreApplication::translate("MainWindow", "Roll", nullptr));
+        label_12->setText(QCoreApplication::translate("MainWindow", "Pitch", nullptr));
+        label_13->setText(QCoreApplication::translate("MainWindow", "Yaw", nullptr));
+        lnEJoint1->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        lnEJoint2->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        lnEJoint3->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        lnEJoint4->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "Joint Control", nullptr));
         label_5->setText(QCoreApplication::translate("MainWindow", "J1", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "J2", nullptr));
         label_7->setText(QCoreApplication::translate("MainWindow", "J3", nullptr));
         label_8->setText(QCoreApplication::translate("MainWindow", "J4", nullptr));
-        lnERotX->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        lnERotY->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        lnERotZ->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "Basic Controls", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Inverse Kinematics", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Robot Control", nullptr));
     } // retranslateUi
 
 };

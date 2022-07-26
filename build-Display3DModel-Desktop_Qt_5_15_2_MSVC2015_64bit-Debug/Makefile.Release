@@ -583,7 +583,6 @@ release\main.obj: ..\Display3DModel\main.cpp ..\Display3DModel\window.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtouchdevice.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		ui_mainwindow.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QVariant \
 		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QApplication \
 		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qapplication.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qcoreapplication.h \
@@ -596,32 +595,13 @@ release\main.obj: ..\Display3DModel\main.cpp ..\Display3DModel\window.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qlayout.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qlayoutitem.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qgridlayout.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QLabel \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qlabel.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qframe.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QPushButton \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qpushbutton.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractbutton.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QSlider \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qslider.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractslider.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QTextBrowser \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtextbrowser.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtextedit.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractscrollarea.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtextdocument.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtextoption.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtextcursor.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtextformat.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qpen.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QVBoxLayout \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QWidget \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QScreen \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qscreen.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QList \
 		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QSize \
 		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QSizeF \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QTransform \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QWidget \
 		..\Display3DModel\scene.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QOpenGLShaderProgram \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qopenglshaderprogram.h \
@@ -757,39 +737,6 @@ release\mainwindow.obj: ..\Display3DModel\mainwindow.cpp ..\Display3DModel\mainw
 		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qicon.h \
 		ui_mainwindow.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QVariant \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QApplication \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qapplication.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qcoreapplication.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qeventloop.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdesktopwidget.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qguiapplication.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qinputmethod.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QHBoxLayout \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qboxlayout.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qlayout.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qlayoutitem.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qgridlayout.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QLabel \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qlabel.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qframe.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QPushButton \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qpushbutton.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractbutton.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QSlider \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qslider.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractslider.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QTextBrowser \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtextbrowser.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtextedit.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractscrollarea.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtextdocument.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtextoption.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtextcursor.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qtextformat.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qpen.h \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QVBoxLayout \
-		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QWidget \
 		..\Display3DModel\window.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QWindow \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qwindow.h \
@@ -813,12 +760,25 @@ release\mainwindow.obj: ..\Display3DModel\mainwindow.cpp ..\Display3DModel\mainw
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qopengles2ext.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qopenglext.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qopenglversionfunctions.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QApplication \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qapplication.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qcoreapplication.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qeventloop.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdesktopwidget.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qguiapplication.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qinputmethod.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QHBoxLayout \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qboxlayout.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qlayout.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qlayoutitem.h \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qgridlayout.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QScreen \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\qscreen.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QList \
 		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QSize \
 		E:\Qt\5.15.2\msvc2015_64\include\QtCore\QSizeF \
 		E:\Qt\5.15.2\msvc2015_64\include\QtGui\QTransform \
+		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QWidget \
 		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QFileDialog \
 		E:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qfiledialog.h \
 		E:\Qt\5.15.2\msvc2015_64\include\QtCore\qdir.h \

@@ -20,6 +20,7 @@ int nAngleJ2 = 0;
 int nAngleJ3 = 0;
 int nAngleJ4 = 0;
 
+MainWindow* pMainWindow = nullptr;
 
 QWidget* MainWindow::getWidgetMain()
 {
@@ -31,7 +32,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    pMainWindow = this;
 }
 
 MainWindow::~MainWindow()
@@ -221,3 +222,47 @@ void MainWindow::on_lnEJoint4_textChanged(const QString &arg1)
     ui->horizontalSliderJ4->setValue(arg1.toInt());
 }
 
+void MainWindow::setEffectorX(float value)
+{
+    ui->lnEEffectorX->setText(QString::number(value));
+}
+
+void MainWindow::setEffectorY(float value)
+{
+    ui->lnEEffectorY->setText(QString::number(value));
+}
+
+void MainWindow::setEffectorZ(float value)
+{
+    ui->lnEEffectorZ->setText(QString::number(value));
+}
+
+void MainWindow::setEffectorRoll(float value)
+{
+    ui->lnEEffectorRoll->setText(QString::number(value));
+}
+
+void MainWindow::setEffectorPitch(float value)
+{
+    ui->lnEEffectorPitch->setText(QString::number(value));
+}
+
+void MainWindow::setEffectorYaw(float value)
+{
+    ui->lnEEffectorYaw->setText(QString::number(value));
+}
+
+MainWindow* getMainWinPtr()
+{
+    return pMainWindow;
+}
+
+void MainWindow::updateEffector(float EffectorX, float EffectorY, float EffectorZ, float EffectorRoll, float EffectorPitch, float EffectorYaw)
+{
+    ui->lnEEffectorX->setText(QString::number(EffectorX));
+    ui->lnEEffectorY->setText(QString::number(EffectorY));
+    ui->lnEEffectorZ->setText(QString::number(EffectorZ));
+    ui->lnEEffectorRoll->setText(QString::number(EffectorRoll));
+    ui->lnEEffectorPitch->setText(QString::number(EffectorPitch));
+    ui->lnEEffectorYaw->setText(QString::number(EffectorYaw));
+}

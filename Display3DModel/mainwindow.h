@@ -3,9 +3,11 @@
 
 #include <QMainWindow>
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
 
 class MainWindow : public QMainWindow
 {
@@ -14,8 +16,25 @@ class MainWindow : public QMainWindow
 public:
     QWidget* getWidgetMain();
 
+
+
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+
+    void setEffectorX(float value);
+
+    void setEffectorY(float value);
+
+    void setEffectorZ(float value);
+
+    void setEffectorRoll(float value);
+
+    void setEffectorPitch(float value);
+
+    void setEffectorYaw(float value);
+
+    void updateEffector(float EffectorX, float EffectorY, float EffectorZ, float EffectorRoll, float EffectorPitch, float EffectorYaw);
 
 private slots:
 
@@ -60,6 +79,8 @@ private slots:
     void on_lnEJoint4_textChanged(const QString &arg1);
 
 private:
+
+
     Ui::MainWindow *ui;
 };
 
@@ -73,6 +94,8 @@ int getAngleJ1();
 int getAngleJ2();
 int getAngleJ3();
 int getAngleJ4();
+MainWindow* getMainWinPtr();
+
 
 
 #endif // MAINWINDOW_H

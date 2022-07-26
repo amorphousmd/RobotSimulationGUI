@@ -552,7 +552,6 @@ void Scene::update()
     createBuffers();
     createAttributes();
     drawNode(m_rootNode.data(), QMatrix4x4());
-    qDebug() << m_model;
     QMatrix4x4 reframeMatrixBase = QMatrix4x4(1.0f, 0.0f, 0.0f, 0.0f,
                                           0.0f, 1.0f, 0.0f, 0.0f,
                                           0.0f, 0.0f, 1.0f, 24.0f,
@@ -594,12 +593,8 @@ void Scene::update()
     float yaw = qAtan2(*(pEffector + 1), *pEffector);
     float pitch = qAtan2(-*(pEffector + 2), qSqrt(*(pEffector + 6) * *(pEffector + 6) + *(pEffector + 10) * *(pEffector + 10)));
     float roll = qAtan2(*(pEffector + 6), *(pEffector + 10));
-    qDebug() << *(pEffector + 12);
-    qDebug() << *(pEffector + 13);
-    qDebug() << *(pEffector + 14);
-    qDebug() << roll * 180 / M_PI;
-    qDebug() << pitch * 180 / M_PI;
-    qDebug() << yaw * 180 / M_PI;
+    MainWindow *mw = getMainWinPtr();
+    mw->updateEffector(*(pEffector + 12), *(pEffector + 13), *(pEffector + 14), roll * 180 / M_PI, pitch * 180 / M_PI, yaw * 180 / M_PI  );
 
     m_vao.release();
 }
