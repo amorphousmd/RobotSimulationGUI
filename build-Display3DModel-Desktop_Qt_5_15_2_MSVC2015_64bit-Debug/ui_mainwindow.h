@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -37,14 +38,14 @@ public:
     QSpacerItem *horizontalSpacer_2;
     QLineEdit *lnETransZ;
     QSpacerItem *horizontalSpacer_4;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_3;
     QLabel *label_2;
     QHBoxLayout *horizontalLayout_2;
     QSlider *verticalSlider_transX;
     QSlider *verticalSlider_transY;
     QSlider *verticalSlider_transZ;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QHBoxLayout *horizontalLayout;
@@ -61,22 +62,6 @@ public:
     QLineEdit *lnERotZ;
     QSpacerItem *horizontalSpacer_8;
     QWidget *tab_2;
-    QWidget *verticalLayoutWidget_3;
-    QVBoxLayout *verticalLayout_6;
-    QLineEdit *lnEEffectorX;
-    QLineEdit *lnEEffectorY;
-    QLineEdit *lnEEffectorZ;
-    QLineEdit *lnEEffectorRoll;
-    QLineEdit *lnEEffectorPitch;
-    QLineEdit *lnEEffectorYaw;
-    QWidget *verticalLayoutWidget_4;
-    QVBoxLayout *verticalLayout_7;
-    QLabel *label_3;
-    QLabel *label_9;
-    QLabel *label_10;
-    QLabel *label_11;
-    QLabel *label_12;
-    QLabel *label_13;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout_4;
     QLineEdit *lnEJoint1;
@@ -98,12 +83,27 @@ public:
     QHBoxLayout *horizontalLayout_7;
     QLabel *label_8;
     QSlider *horizontalSliderJ4;
+    QWidget *gridLayoutWidget;
+    QGridLayout *gridLayout;
+    QLineEdit *lnEEffectorY;
+    QLineEdit *lnEEffectorX;
+    QLineEdit *lnEEffectorPitch;
+    QLabel *label_9;
+    QLabel *label_11;
+    QLabel *label_10;
+    QLabel *label_3;
+    QLineEdit *lnEEffectorZ;
+    QLineEdit *lnEEffectorRoll;
+    QLabel *label_12;
+    QLabel *label_13;
+    QLineEdit *lnEEffectorYaw;
+    QLabel *label_14;
 
     void setupUi(QWidget *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1317, 720);
+        MainWindow->resize(1326, 720);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -115,7 +115,7 @@ public:
         widgetMain->setAutoFillBackground(false);
         tabWidget = new QTabWidget(MainWindow);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tabWidget->setGeometry(QRect(960, 0, 351, 721));
+        tabWidget->setGeometry(QRect(960, 0, 361, 721));
         tab = new QWidget();
         tab->setObjectName(QString::fromUtf8("tab"));
         horizontalLayoutWidget_5 = new QWidget(tab);
@@ -158,13 +158,13 @@ public:
 
         horizontalLayout_8->addItem(horizontalSpacer_4);
 
-        widget = new QWidget(tab);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(10, 70, 321, 171));
-        verticalLayout_3 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(tab);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 70, 321, 171));
+        verticalLayout_3 = new QVBoxLayout(layoutWidget);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setAlignment(Qt::AlignCenter);
 
@@ -172,7 +172,7 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        verticalSlider_transX = new QSlider(widget);
+        verticalSlider_transX = new QSlider(layoutWidget);
         verticalSlider_transX->setObjectName(QString::fromUtf8("verticalSlider_transX"));
         verticalSlider_transX->setMinimum(-200);
         verticalSlider_transX->setMaximum(200);
@@ -180,7 +180,7 @@ public:
 
         horizontalLayout_2->addWidget(verticalSlider_transX);
 
-        verticalSlider_transY = new QSlider(widget);
+        verticalSlider_transY = new QSlider(layoutWidget);
         verticalSlider_transY->setObjectName(QString::fromUtf8("verticalSlider_transY"));
         verticalSlider_transY->setMinimum(-200);
         verticalSlider_transY->setMaximum(200);
@@ -188,7 +188,7 @@ public:
 
         horizontalLayout_2->addWidget(verticalSlider_transY);
 
-        verticalSlider_transZ = new QSlider(widget);
+        verticalSlider_transZ = new QSlider(layoutWidget);
         verticalSlider_transZ->setObjectName(QString::fromUtf8("verticalSlider_transZ"));
         verticalSlider_transZ->setMinimum(-200);
         verticalSlider_transZ->setMaximum(200);
@@ -199,13 +199,13 @@ public:
 
         verticalLayout_3->addLayout(horizontalLayout_2);
 
-        widget1 = new QWidget(tab);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(10, 300, 321, 171));
-        verticalLayout = new QVBoxLayout(widget1);
+        layoutWidget1 = new QWidget(tab);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(10, 300, 321, 171));
+        verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget1);
+        label = new QLabel(layoutWidget1);
         label->setObjectName(QString::fromUtf8("label"));
         label->setAlignment(Qt::AlignCenter);
 
@@ -213,21 +213,21 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        verticalSlider_Roll = new QSlider(widget1);
+        verticalSlider_Roll = new QSlider(layoutWidget1);
         verticalSlider_Roll->setObjectName(QString::fromUtf8("verticalSlider_Roll"));
         verticalSlider_Roll->setMaximum(360);
         verticalSlider_Roll->setOrientation(Qt::Vertical);
 
         horizontalLayout->addWidget(verticalSlider_Roll);
 
-        verticalSlider_Pitch = new QSlider(widget1);
+        verticalSlider_Pitch = new QSlider(layoutWidget1);
         verticalSlider_Pitch->setObjectName(QString::fromUtf8("verticalSlider_Pitch"));
         verticalSlider_Pitch->setMaximum(360);
         verticalSlider_Pitch->setOrientation(Qt::Vertical);
 
         horizontalLayout->addWidget(verticalSlider_Pitch);
 
-        verticalSlider_Yaw = new QSlider(widget1);
+        verticalSlider_Yaw = new QSlider(layoutWidget1);
         verticalSlider_Yaw->setObjectName(QString::fromUtf8("verticalSlider_Yaw"));
         verticalSlider_Yaw->setMaximum(360);
         verticalSlider_Yaw->setOrientation(Qt::Vertical);
@@ -280,78 +280,6 @@ public:
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QString::fromUtf8("tab_2"));
-        verticalLayoutWidget_3 = new QWidget(tab_2);
-        verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
-        verticalLayoutWidget_3->setGeometry(QRect(90, 0, 141, 381));
-        verticalLayout_6 = new QVBoxLayout(verticalLayoutWidget_3);
-        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
-        verticalLayout_6->setContentsMargins(0, 0, 0, 0);
-        lnEEffectorX = new QLineEdit(verticalLayoutWidget_3);
-        lnEEffectorX->setObjectName(QString::fromUtf8("lnEEffectorX"));
-
-        verticalLayout_6->addWidget(lnEEffectorX);
-
-        lnEEffectorY = new QLineEdit(verticalLayoutWidget_3);
-        lnEEffectorY->setObjectName(QString::fromUtf8("lnEEffectorY"));
-
-        verticalLayout_6->addWidget(lnEEffectorY);
-
-        lnEEffectorZ = new QLineEdit(verticalLayoutWidget_3);
-        lnEEffectorZ->setObjectName(QString::fromUtf8("lnEEffectorZ"));
-
-        verticalLayout_6->addWidget(lnEEffectorZ);
-
-        lnEEffectorRoll = new QLineEdit(verticalLayoutWidget_3);
-        lnEEffectorRoll->setObjectName(QString::fromUtf8("lnEEffectorRoll"));
-
-        verticalLayout_6->addWidget(lnEEffectorRoll);
-
-        lnEEffectorPitch = new QLineEdit(verticalLayoutWidget_3);
-        lnEEffectorPitch->setObjectName(QString::fromUtf8("lnEEffectorPitch"));
-
-        verticalLayout_6->addWidget(lnEEffectorPitch);
-
-        lnEEffectorYaw = new QLineEdit(verticalLayoutWidget_3);
-        lnEEffectorYaw->setObjectName(QString::fromUtf8("lnEEffectorYaw"));
-
-        verticalLayout_6->addWidget(lnEEffectorYaw);
-
-        verticalLayoutWidget_4 = new QWidget(tab_2);
-        verticalLayoutWidget_4->setObjectName(QString::fromUtf8("verticalLayoutWidget_4"));
-        verticalLayoutWidget_4->setGeometry(QRect(20, 20, 61, 341));
-        verticalLayout_7 = new QVBoxLayout(verticalLayoutWidget_4);
-        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
-        verticalLayout_7->setContentsMargins(0, 0, 0, 0);
-        label_3 = new QLabel(verticalLayoutWidget_4);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-
-        verticalLayout_7->addWidget(label_3);
-
-        label_9 = new QLabel(verticalLayoutWidget_4);
-        label_9->setObjectName(QString::fromUtf8("label_9"));
-
-        verticalLayout_7->addWidget(label_9);
-
-        label_10 = new QLabel(verticalLayoutWidget_4);
-        label_10->setObjectName(QString::fromUtf8("label_10"));
-
-        verticalLayout_7->addWidget(label_10);
-
-        label_11 = new QLabel(verticalLayoutWidget_4);
-        label_11->setObjectName(QString::fromUtf8("label_11"));
-
-        verticalLayout_7->addWidget(label_11);
-
-        label_12 = new QLabel(verticalLayoutWidget_4);
-        label_12->setObjectName(QString::fromUtf8("label_12"));
-
-        verticalLayout_7->addWidget(label_12);
-
-        label_13 = new QLabel(verticalLayoutWidget_4);
-        label_13->setObjectName(QString::fromUtf8("label_13"));
-
-        verticalLayout_7->addWidget(label_13);
-
         verticalLayoutWidget = new QWidget(tab_2);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(270, 420, 76, 171));
@@ -436,7 +364,7 @@ public:
 
         horizontalSliderJ3 = new QSlider(verticalLayoutWidget_2);
         horizontalSliderJ3->setObjectName(QString::fromUtf8("horizontalSliderJ3"));
-        horizontalSliderJ3->setMinimum(-180);
+        horizontalSliderJ3->setMinimum(0);
         horizontalSliderJ3->setMaximum(180);
         horizontalSliderJ3->setOrientation(Qt::Horizontal);
 
@@ -463,6 +391,75 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_7);
 
+        gridLayoutWidget = new QWidget(tab_2);
+        gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
+        gridLayoutWidget->setGeometry(QRect(10, 60, 141, 291));
+        gridLayout = new QGridLayout(gridLayoutWidget);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        lnEEffectorY = new QLineEdit(gridLayoutWidget);
+        lnEEffectorY->setObjectName(QString::fromUtf8("lnEEffectorY"));
+
+        gridLayout->addWidget(lnEEffectorY, 1, 1, 1, 1);
+
+        lnEEffectorX = new QLineEdit(gridLayoutWidget);
+        lnEEffectorX->setObjectName(QString::fromUtf8("lnEEffectorX"));
+
+        gridLayout->addWidget(lnEEffectorX, 0, 1, 1, 1);
+
+        lnEEffectorPitch = new QLineEdit(gridLayoutWidget);
+        lnEEffectorPitch->setObjectName(QString::fromUtf8("lnEEffectorPitch"));
+
+        gridLayout->addWidget(lnEEffectorPitch, 4, 1, 1, 1);
+
+        label_9 = new QLabel(gridLayoutWidget);
+        label_9->setObjectName(QString::fromUtf8("label_9"));
+
+        gridLayout->addWidget(label_9, 1, 0, 1, 1);
+
+        label_11 = new QLabel(gridLayoutWidget);
+        label_11->setObjectName(QString::fromUtf8("label_11"));
+
+        gridLayout->addWidget(label_11, 3, 0, 1, 1);
+
+        label_10 = new QLabel(gridLayoutWidget);
+        label_10->setObjectName(QString::fromUtf8("label_10"));
+
+        gridLayout->addWidget(label_10, 2, 0, 1, 1);
+
+        label_3 = new QLabel(gridLayoutWidget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+
+        gridLayout->addWidget(label_3, 0, 0, 1, 1);
+
+        lnEEffectorZ = new QLineEdit(gridLayoutWidget);
+        lnEEffectorZ->setObjectName(QString::fromUtf8("lnEEffectorZ"));
+
+        gridLayout->addWidget(lnEEffectorZ, 2, 1, 1, 1);
+
+        lnEEffectorRoll = new QLineEdit(gridLayoutWidget);
+        lnEEffectorRoll->setObjectName(QString::fromUtf8("lnEEffectorRoll"));
+
+        gridLayout->addWidget(lnEEffectorRoll, 3, 1, 1, 1);
+
+        label_12 = new QLabel(gridLayoutWidget);
+        label_12->setObjectName(QString::fromUtf8("label_12"));
+
+        gridLayout->addWidget(label_12, 4, 0, 1, 1);
+
+        label_13 = new QLabel(gridLayoutWidget);
+        label_13->setObjectName(QString::fromUtf8("label_13"));
+
+        gridLayout->addWidget(label_13, 5, 0, 1, 1);
+
+        lnEEffectorYaw = new QLineEdit(gridLayoutWidget);
+        lnEEffectorYaw->setObjectName(QString::fromUtf8("lnEEffectorYaw"));
+
+        gridLayout->addWidget(lnEEffectorYaw, 5, 1, 1, 1);
+
+        label_14 = new QLabel(tab_2);
+        label_14->setObjectName(QString::fromUtf8("label_14"));
+        label_14->setGeometry(QRect(40, 30, 81, 20));
         tabWidget->addTab(tab_2, QString());
 
         retranslateUi(MainWindow);
@@ -485,12 +482,6 @@ public:
         lnERotY->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         lnERotZ->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "Scene Control", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
-        label_9->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
-        label_10->setText(QCoreApplication::translate("MainWindow", "Z", nullptr));
-        label_11->setText(QCoreApplication::translate("MainWindow", "Roll", nullptr));
-        label_12->setText(QCoreApplication::translate("MainWindow", "Pitch", nullptr));
-        label_13->setText(QCoreApplication::translate("MainWindow", "Yaw", nullptr));
         lnEJoint1->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         lnEJoint2->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         lnEJoint3->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
@@ -500,6 +491,13 @@ public:
         label_6->setText(QCoreApplication::translate("MainWindow", "J2", nullptr));
         label_7->setText(QCoreApplication::translate("MainWindow", "J3", nullptr));
         label_8->setText(QCoreApplication::translate("MainWindow", "J4", nullptr));
+        label_9->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
+        label_11->setText(QCoreApplication::translate("MainWindow", "Roll", nullptr));
+        label_10->setText(QCoreApplication::translate("MainWindow", "Z", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
+        label_12->setText(QCoreApplication::translate("MainWindow", "Pitch", nullptr));
+        label_13->setText(QCoreApplication::translate("MainWindow", "Yaw", nullptr));
+        label_14->setText(QCoreApplication::translate("MainWindow", "End Effector", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Robot Control", nullptr));
     } // retranslateUi
 

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1317</width>
+    <width>1326</width>
     <height>720</height>
    </rect>
   </property>
@@ -37,7 +37,7 @@
     <rect>
      <x>960</x>
      <y>0</y>
-     <width>351</width>
+     <width>361</width>
      <height>721</height>
     </rect>
    </property>
@@ -154,7 +154,7 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -219,7 +219,7 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -386,90 +386,6 @@
     <attribute name="title">
      <string>Robot Control</string>
     </attribute>
-    <widget class="QWidget" name="verticalLayoutWidget_3">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>0</y>
-       <width>141</width>
-       <height>381</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_6">
-      <item>
-       <widget class="QLineEdit" name="lnEEffectorX"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="lnEEffectorY"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="lnEEffectorZ"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="lnEEffectorRoll"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="lnEEffectorPitch"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="lnEEffectorYaw"/>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="verticalLayoutWidget_4">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>61</width>
-       <height>341</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_7">
-      <item>
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>X</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_9">
-        <property name="text">
-         <string>Y</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_10">
-        <property name="text">
-         <string>Z</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_11">
-        <property name="text">
-         <string>Roll</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_12">
-        <property name="text">
-         <string>Pitch</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_13">
-        <property name="text">
-         <string>Yaw</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
     <widget class="QWidget" name="verticalLayoutWidget">
      <property name="geometry">
       <rect>
@@ -605,7 +521,7 @@
         <item>
          <widget class="QSlider" name="horizontalSliderJ3">
           <property name="minimum">
-           <number>-180</number>
+           <number>0</number>
           </property>
           <property name="maximum">
            <number>180</number>
@@ -642,6 +558,91 @@
        </layout>
       </item>
      </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>141</width>
+       <height>291</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lnEEffectorY"/>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lnEEffectorX"/>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="lnEEffectorPitch"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Y</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>Roll</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>Z</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>X</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lnEEffectorZ"/>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="lnEEffectorRoll"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>Pitch</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>Yaw</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="lnEEffectorYaw"/>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QLabel" name="label_14">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>30</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>End Effector</string>
+     </property>
     </widget>
    </widget>
   </widget>

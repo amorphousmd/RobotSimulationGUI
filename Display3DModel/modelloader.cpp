@@ -134,7 +134,7 @@ QSharedPointer<MaterialInfo> ModelLoader::processMaterial(aiMaterial *material)
 
     if(shadingModel != aiShadingMode_Phong && shadingModel != aiShadingMode_Gouraud)
     {
-        qDebug() << "This mesh's shading model is not implemented in this loader, setting to default material";
+        //qDebug() << "This mesh's shading model is not implemented in this loader, setting to default material";
         mater->Name = "DefaultMaterial";
     }
     else

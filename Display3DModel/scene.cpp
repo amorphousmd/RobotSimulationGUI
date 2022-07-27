@@ -13,6 +13,10 @@ float fTranslationZE = 0.0f;
 float fRollAngleE = 0.0f;
 float fPitchAngleE = 0.0f;
 float fYawAngleE = 0.0f;
+float fInverseAngleJ1 = 0.0f;
+float fInverseAngleJ2 = 0.0f;
+float fInverseAngleJ3 = 0.0f;
+float fInverseAngleJ4 = 0.0f;
 
 float getTranslationXEffector()
 {
@@ -80,6 +84,26 @@ QMatrix4x4 calculateDHMatrix(float theta, float alpha, float r, float d)
     return matrix;
 }
 
+void calculateInverseKinematics(float EEffectorX, float EEffectorY, float EEffectorZ, float pitch, float yaw)
+{
+    double theta1 = qAtan2(EEffectorY, EEffectorX) * 180 / M_PI;
+    double Y = EEffectorZ - 65.2f;
+    double X = sqrt(EEffectorX * EEffectorX + EEffectorY * EEffectorY);
+    double beta = 180 * (yaw > 90.0f) + (-pitch) * ((yaw < 90.0f) * 2 - 1);
+    double P2x = X - 93 * qCos(beta * M_PI / 180);
+    double P2y = Y - 93 * qSin(beta * M_PI / 180);
+    double theta3 = qAcos((P2x*P2x + P2y*P2y - 300*300 - 383*383) / (2 * 300 * 383)) * 180 / M_PI ;
+    double theta2 = (qAtan(P2y/ P2x) - qAtan( (383 * qSin((int)theta3 * M_PI / 180))  /
+                                            ( 300 + 383 * qCos((int)theta3 * M_PI / 180) ) ) )* 180 / M_PI;
+    double theta4 = beta - theta3 - theta2;
+    qDebug() << "\n";
+    qDebug() << beta;
+    qDebug() << X;
+    qDebug() << Y;
+    qDebug() << P2x;
+    qDebug() << P2y;
+    qDebug() << theta3;
+}
 Scene::Scene(QString filepath, QString filepath2, QString filepath3, QString filepath4, QString filepath5, QString filepath6, ModelLoader::PathType pathType, QString texturePath) :
     m_indexBuffer(QOpenGLBuffer::IndexBuffer)
   , m_filepath(filepath)
@@ -584,18 +608,22 @@ void Scene::update()
     createBuffers4();
     drawNode(m_rootNode.data(), QMatrix4x4());
 
-    QMatrix4x4 endEffectorMatrix = frameMatrix4draw * calculateDHMatrix(0.0f, 0.0f, 33.0f, 0.0f);
+    QMatrix4x4 frameMatrix5 = frameMatrix4 * calculateDHMatrix(getAngleJ4(), 0.0f, 60.0f, 0.0f);
+    QMatrix4x4 frameMatrix5draw = frameMatrix5;
+    m_model = frameMatrix5draw * calculateDHMatrix(0.0f, 0.0f , 0.0f, 4.8f);
     createBuffers5();
     drawNode(m_rootNode.data(), QMatrix4x4());
 
-    QMatrix4x4 effectorMatrix = effectorCMatrix * endEffectorMatrix;
+    QMatrix4x4 frameMatrixEndEffector = frameMatrix5 * calculateDHMatrix(0.0f, 0.0f, 33.0f, 0.0f);
+
+    QMatrix4x4 effectorMatrix = effectorCMatrix * frameMatrixEndEffector;
     float* pEffector = effectorMatrix.data();
     float yaw = qAtan2(*(pEffector + 1), *pEffector);
     float pitch = qAtan2(-*(pEffector + 2), qSqrt(*(pEffector + 6) * *(pEffector + 6) + *(pEffector + 10) * *(pEffector + 10)));
     float roll = qAtan2(*(pEffector + 6), *(pEffector + 10));
     MainWindow *mw = getMainWinPtr();
     mw->updateEffector(*(pEffector + 12), *(pEffector + 13), *(pEffector + 14), roll * 180 / M_PI, pitch * 180 / M_PI, yaw * 180 / M_PI  );
-
+    calculateInverseKinematics(*(pEffector + 12), *(pEffector + 13), *(pEffector + 14), pitch * 180 / M_PI, yaw * 180 / M_PI);
     m_vao.release();
 }
 
