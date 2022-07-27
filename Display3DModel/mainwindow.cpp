@@ -259,10 +259,10 @@ MainWindow* getMainWinPtr()
 
 void MainWindow::updateEffector(float EffectorX, float EffectorY, float EffectorZ, float EffectorRoll, float EffectorPitch, float EffectorYaw)
 {
-    ui->lnEEffectorX->setText(QString::number(EffectorX));
-    ui->lnEEffectorY->setText(QString::number(EffectorY));
-    ui->lnEEffectorZ->setText(QString::number(EffectorZ));
-    ui->lnEEffectorRoll->setText(QString::number(EffectorRoll));
-    ui->lnEEffectorPitch->setText(QString::number(EffectorPitch));
-    ui->lnEEffectorYaw->setText(QString::number(EffectorYaw));
+    ui->lnEEffectorX->setText(QString::number(EffectorX, 'f', 2));
+    ui->lnEEffectorY->setText(QString::number(EffectorY, 'f', 2));
+    ui->lnEEffectorZ->setText(QString::number(EffectorZ, 'f', 2));
+    ui->lnEEffectorRoll->setText(QString::number(EffectorRoll, 'f', 2));
+    ui->lnEEffectorPitch->setText(QString::number(EffectorPitch, 'f', 2));
+    ui->lnEEffectorYaw->setText(QString::number(EffectorYaw, 'f', 2));
 }
