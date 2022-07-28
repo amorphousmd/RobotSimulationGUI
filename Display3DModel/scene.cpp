@@ -170,7 +170,6 @@ void calculateInverseKinematics(float EEffectorX, float EEffectorY, float EEffec
 //    qDebug() << theta3r;
 //    qDebug() << theta4r;
 
-//    qDebug() << (qFabs(theta3 - (int) (theta3 + 0.5f)) > qFabs(theta3r - (int) (theta3r + 0.5f)));
     qDebug() << round(constrainAngle(theta1Solution));
     qDebug() << round(constrainAngle(theta2Solution));
     qDebug() << round(theta3Solution);

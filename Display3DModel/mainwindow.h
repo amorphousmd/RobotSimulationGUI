@@ -78,6 +78,18 @@ private slots:
 
     void on_lnEJoint4_textChanged(const QString &arg1);
 
+    void on_horizontalSliderInvX_valueChanged(int value);
+
+    void on_horizontalSliderInvY_valueChanged(int value);
+
+    void on_horizontalSliderInvZ_valueChanged(int value);
+
+    void on_horizontalSliderInvRoll_valueChanged(int value);
+
+    void on_horizontalSliderInvPitch_valueChanged(int value);
+
+    void on_horizontalSliderInvYaw_valueChanged(int value);
+
 private:
 
 

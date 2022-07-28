@@ -266,3 +266,39 @@ void MainWindow::updateEffector(float EffectorX, float EffectorY, float Effector
     ui->lnEEffectorPitch->setText(QString::number(EffectorPitch, 'f', 2));
     ui->lnEEffectorYaw->setText(QString::number(EffectorYaw, 'f', 2));
 }
+
+void MainWindow::on_horizontalSliderInvX_valueChanged(int value)
+{
+    ui->lnEInvX->setText(QString::number((float)value / 100));
+}
+
+
+void MainWindow::on_horizontalSliderInvY_valueChanged(int value)
+{
+    ui->lnEInvY->setText(QString::number((float)value / 100));
+}
+
+
+void MainWindow::on_horizontalSliderInvZ_valueChanged(int value)
+{
+    ui->lnEInvZ->setText(QString::number((float)value / 100));
+}
+
+
+void MainWindow::on_horizontalSliderInvRoll_valueChanged(int value)
+{
+    ui->lnEInvRoll->setText(QString::number(value));
+}
+
+
+void MainWindow::on_horizontalSliderInvPitch_valueChanged(int value)
+{
+    ui->lnEInvPitch->setText(QString::number(value));
+}
+
+
+void MainWindow::on_horizontalSliderInvYaw_valueChanged(int value)
+{
+    ui->lnEInvYaw->setText(QString::number(value));
+}
+

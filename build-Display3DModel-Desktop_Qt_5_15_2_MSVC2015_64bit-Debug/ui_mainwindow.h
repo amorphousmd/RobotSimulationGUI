@@ -99,14 +99,28 @@ public:
     QLineEdit *lnEEffectorYaw;
     QLabel *label_14;
     QWidget *tab_3;
+    QWidget *gridLayoutWidget_2;
+    QGridLayout *gridLayout_2;
+    QLabel *label_15;
+    QLabel *label_17;
+    QSlider *horizontalSliderInvX;
+    QSlider *horizontalSliderInvRoll;
+    QSlider *horizontalSliderInvZ;
+    QLabel *label_18;
+    QLabel *label_19;
+    QSlider *horizontalSliderInvPitch;
+    QSlider *horizontalSliderInvY;
+    QLabel *label_16;
+    QLabel *label_20;
+    QSlider *horizontalSliderInvYaw;
     QWidget *verticalLayoutWidget_3;
     QVBoxLayout *verticalLayout_5;
-    QSlider *horizontalSlider;
-    QSlider *horizontalSlider_2;
-    QSlider *horizontalSlider_3;
-    QSlider *horizontalSlider_4;
-    QSlider *horizontalSlider_5;
-    QSlider *horizontalSlider_6;
+    QLineEdit *lnEInvX;
+    QLineEdit *lnEInvY;
+    QLineEdit *lnEInvZ;
+    QLineEdit *lnEInvRoll;
+    QLineEdit *lnEInvPitch;
+    QLineEdit *lnEInvYaw;
 
     void setupUi(QWidget *MainWindow)
     {
@@ -402,7 +416,7 @@ public:
 
         gridLayoutWidget = new QWidget(tab_2);
         gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(10, 60, 141, 291));
+        gridLayoutWidget->setGeometry(QRect(110, 60, 141, 291));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -468,51 +482,135 @@ public:
 
         label_14 = new QLabel(tab_2);
         label_14->setObjectName(QString::fromUtf8("label_14"));
-        label_14->setGeometry(QRect(40, 30, 81, 20));
+        label_14->setGeometry(QRect(140, 30, 81, 20));
         tabWidget->addTab(tab_2, QString());
         tab_3 = new QWidget();
         tab_3->setObjectName(QString::fromUtf8("tab_3"));
+        gridLayoutWidget_2 = new QWidget(tab_3);
+        gridLayoutWidget_2->setObjectName(QString::fromUtf8("gridLayoutWidget_2"));
+        gridLayoutWidget_2->setGeometry(QRect(30, 30, 231, 231));
+        gridLayout_2 = new QGridLayout(gridLayoutWidget_2);
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        gridLayout_2->setContentsMargins(0, 0, 0, 0);
+        label_15 = new QLabel(gridLayoutWidget_2);
+        label_15->setObjectName(QString::fromUtf8("label_15"));
+
+        gridLayout_2->addWidget(label_15, 0, 0, 1, 1);
+
+        label_17 = new QLabel(gridLayoutWidget_2);
+        label_17->setObjectName(QString::fromUtf8("label_17"));
+
+        gridLayout_2->addWidget(label_17, 2, 0, 1, 1);
+
+        horizontalSliderInvX = new QSlider(gridLayoutWidget_2);
+        horizontalSliderInvX->setObjectName(QString::fromUtf8("horizontalSliderInvX"));
+        horizontalSliderInvX->setMinimum(-70000);
+        horizontalSliderInvX->setMaximum(70000);
+        horizontalSliderInvX->setOrientation(Qt::Horizontal);
+
+        gridLayout_2->addWidget(horizontalSliderInvX, 0, 1, 1, 1);
+
+        horizontalSliderInvRoll = new QSlider(gridLayoutWidget_2);
+        horizontalSliderInvRoll->setObjectName(QString::fromUtf8("horizontalSliderInvRoll"));
+        horizontalSliderInvRoll->setMinimum(-180);
+        horizontalSliderInvRoll->setMaximum(180);
+        horizontalSliderInvRoll->setOrientation(Qt::Horizontal);
+
+        gridLayout_2->addWidget(horizontalSliderInvRoll, 3, 1, 1, 1);
+
+        horizontalSliderInvZ = new QSlider(gridLayoutWidget_2);
+        horizontalSliderInvZ->setObjectName(QString::fromUtf8("horizontalSliderInvZ"));
+        horizontalSliderInvZ->setMinimum(-80000);
+        horizontalSliderInvZ->setMaximum(80000);
+        horizontalSliderInvZ->setOrientation(Qt::Horizontal);
+
+        gridLayout_2->addWidget(horizontalSliderInvZ, 2, 1, 1, 1);
+
+        label_18 = new QLabel(gridLayoutWidget_2);
+        label_18->setObjectName(QString::fromUtf8("label_18"));
+
+        gridLayout_2->addWidget(label_18, 3, 0, 1, 1);
+
+        label_19 = new QLabel(gridLayoutWidget_2);
+        label_19->setObjectName(QString::fromUtf8("label_19"));
+
+        gridLayout_2->addWidget(label_19, 4, 0, 1, 1);
+
+        horizontalSliderInvPitch = new QSlider(gridLayoutWidget_2);
+        horizontalSliderInvPitch->setObjectName(QString::fromUtf8("horizontalSliderInvPitch"));
+        horizontalSliderInvPitch->setMinimum(-180);
+        horizontalSliderInvPitch->setMaximum(180);
+        horizontalSliderInvPitch->setOrientation(Qt::Horizontal);
+
+        gridLayout_2->addWidget(horizontalSliderInvPitch, 4, 1, 1, 1);
+
+        horizontalSliderInvY = new QSlider(gridLayoutWidget_2);
+        horizontalSliderInvY->setObjectName(QString::fromUtf8("horizontalSliderInvY"));
+        horizontalSliderInvY->setMinimum(-70000);
+        horizontalSliderInvY->setMaximum(70000);
+        horizontalSliderInvY->setOrientation(Qt::Horizontal);
+
+        gridLayout_2->addWidget(horizontalSliderInvY, 1, 1, 1, 1);
+
+        label_16 = new QLabel(gridLayoutWidget_2);
+        label_16->setObjectName(QString::fromUtf8("label_16"));
+
+        gridLayout_2->addWidget(label_16, 1, 0, 1, 1);
+
+        label_20 = new QLabel(gridLayoutWidget_2);
+        label_20->setObjectName(QString::fromUtf8("label_20"));
+
+        gridLayout_2->addWidget(label_20, 5, 0, 1, 1);
+
+        horizontalSliderInvYaw = new QSlider(gridLayoutWidget_2);
+        horizontalSliderInvYaw->setObjectName(QString::fromUtf8("horizontalSliderInvYaw"));
+        horizontalSliderInvYaw->setMinimum(-180);
+        horizontalSliderInvYaw->setMaximum(180);
+        horizontalSliderInvYaw->setOrientation(Qt::Horizontal);
+
+        gridLayout_2->addWidget(horizontalSliderInvYaw, 5, 1, 1, 1);
+
         verticalLayoutWidget_3 = new QWidget(tab_3);
         verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
-        verticalLayoutWidget_3->setGeometry(QRect(90, 100, 160, 169));
+        verticalLayoutWidget_3->setGeometry(QRect(270, 30, 71, 231));
         verticalLayout_5 = new QVBoxLayout(verticalLayoutWidget_3);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
-        horizontalSlider = new QSlider(verticalLayoutWidget_3);
-        horizontalSlider->setObjectName(QString::fromUtf8("horizontalSlider"));
-        horizontalSlider->setOrientation(Qt::Horizontal);
+        lnEInvX = new QLineEdit(verticalLayoutWidget_3);
+        lnEInvX->setObjectName(QString::fromUtf8("lnEInvX"));
+        lnEInvX->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_5->addWidget(horizontalSlider);
+        verticalLayout_5->addWidget(lnEInvX);
 
-        horizontalSlider_2 = new QSlider(verticalLayoutWidget_3);
-        horizontalSlider_2->setObjectName(QString::fromUtf8("horizontalSlider_2"));
-        horizontalSlider_2->setOrientation(Qt::Horizontal);
+        lnEInvY = new QLineEdit(verticalLayoutWidget_3);
+        lnEInvY->setObjectName(QString::fromUtf8("lnEInvY"));
+        lnEInvY->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_5->addWidget(horizontalSlider_2);
+        verticalLayout_5->addWidget(lnEInvY);
 
-        horizontalSlider_3 = new QSlider(verticalLayoutWidget_3);
-        horizontalSlider_3->setObjectName(QString::fromUtf8("horizontalSlider_3"));
-        horizontalSlider_3->setOrientation(Qt::Horizontal);
+        lnEInvZ = new QLineEdit(verticalLayoutWidget_3);
+        lnEInvZ->setObjectName(QString::fromUtf8("lnEInvZ"));
+        lnEInvZ->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_5->addWidget(horizontalSlider_3);
+        verticalLayout_5->addWidget(lnEInvZ);
 
-        horizontalSlider_4 = new QSlider(verticalLayoutWidget_3);
-        horizontalSlider_4->setObjectName(QString::fromUtf8("horizontalSlider_4"));
-        horizontalSlider_4->setOrientation(Qt::Horizontal);
+        lnEInvRoll = new QLineEdit(verticalLayoutWidget_3);
+        lnEInvRoll->setObjectName(QString::fromUtf8("lnEInvRoll"));
+        lnEInvRoll->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_5->addWidget(horizontalSlider_4);
+        verticalLayout_5->addWidget(lnEInvRoll);
 
-        horizontalSlider_5 = new QSlider(verticalLayoutWidget_3);
-        horizontalSlider_5->setObjectName(QString::fromUtf8("horizontalSlider_5"));
-        horizontalSlider_5->setOrientation(Qt::Horizontal);
+        lnEInvPitch = new QLineEdit(verticalLayoutWidget_3);
+        lnEInvPitch->setObjectName(QString::fromUtf8("lnEInvPitch"));
+        lnEInvPitch->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_5->addWidget(horizontalSlider_5);
+        verticalLayout_5->addWidget(lnEInvPitch);
 
-        horizontalSlider_6 = new QSlider(verticalLayoutWidget_3);
-        horizontalSlider_6->setObjectName(QString::fromUtf8("horizontalSlider_6"));
-        horizontalSlider_6->setOrientation(Qt::Horizontal);
+        lnEInvYaw = new QLineEdit(verticalLayoutWidget_3);
+        lnEInvYaw->setObjectName(QString::fromUtf8("lnEInvYaw"));
+        lnEInvYaw->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_5->addWidget(horizontalSlider_6);
+        verticalLayout_5->addWidget(lnEInvYaw);
 
         tabWidget->addTab(tab_3, QString());
 
@@ -553,6 +651,12 @@ public:
         label_13->setText(QCoreApplication::translate("MainWindow", "Yaw", nullptr));
         label_14->setText(QCoreApplication::translate("MainWindow", "End Effector", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Robot Control", nullptr));
+        label_15->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
+        label_17->setText(QCoreApplication::translate("MainWindow", "Z", nullptr));
+        label_18->setText(QCoreApplication::translate("MainWindow", "Roll", nullptr));
+        label_19->setText(QCoreApplication::translate("MainWindow", "Pitch", nullptr));
+        label_16->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
+        label_20->setText(QCoreApplication::translate("MainWindow", "Yaw", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Inverse Kinematics", nullptr));
     } // retranslateUi
 
