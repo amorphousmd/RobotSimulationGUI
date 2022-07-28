@@ -66,6 +66,13 @@ float getYawAngleE()
 //    return matrix;
 //}
 
+double constrainAngle(double x){
+    x = fmod(x + 180,360);
+    if (x < 0)
+        x += 360;
+    return x - 180;
+}
+
 QMatrix4x4 calculateZRotationMatrix(float theta)
 {
     QMatrix4x4 matrix = QMatrix4x4(qCos(theta * M_PI / 180), -qSin(theta * M_PI / 180), 0, 0,
@@ -86,23 +93,88 @@ QMatrix4x4 calculateDHMatrix(float theta, float alpha, float r, float d)
 
 void calculateInverseKinematics(float EEffectorX, float EEffectorY, float EEffectorZ, float pitch, float yaw)
 {
+    // Normal Mode Inverse Kinematics
     double theta1 = qAtan2(EEffectorY, EEffectorX) * 180 / M_PI;
+
     double Y = EEffectorZ - 65.2f;
-    double X = sqrt(EEffectorX * EEffectorX + EEffectorY * EEffectorY);
-    double beta = 180 * (yaw > 90.0f) + (-pitch) * ((yaw < 90.0f) * 2 - 1);
+    double X = sqrt(EEffectorX * EEffectorX + EEffectorY * EEffectorY) ;
+    double beta = 0.0f;
+
+    if ((yaw * (int) theta1) == 0)
+    {
+        beta = 180 * (yaw > 90.0f) + (-pitch) * ((yaw < 90.0f) * 2 - 1);
+    }
+    else
+    {
+        beta = 180 * ((yaw * theta1) < 0.0f) + (-pitch) * (((yaw * theta1) > 0.0f) * 2 - 1);
+    }
     double P2x = X - 93 * qCos(beta * M_PI / 180);
     double P2y = Y - 93 * qSin(beta * M_PI / 180);
     double theta3 = qAcos((P2x*P2x + P2y*P2y - 300*300 - 383*383) / (2 * 300 * 383)) * 180 / M_PI ;
-    double theta2 = (qAtan(P2y/ P2x) - qAtan( (383 * qSin((int)theta3 * M_PI / 180))  /
-                                            ( 300 + 383 * qCos((int)theta3 * M_PI / 180) ) ) )* 180 / M_PI;
+    double theta2 = (qAtan(P2y/ P2x) - qAtan2( (383 * qSin(theta3 * M_PI / 180))  ,
+                                            ( 300 + 383 * qCos(theta3 * M_PI / 180) ) ) )* 180 / M_PI;
     double theta4 = beta - theta3 - theta2;
+
+
+    // Special Mode Inverse Kinematics
+    double theta1r = (theta1 != 0) ? (((theta1 < 0)) ? (theta1 + 180) :(theta1 - 180)) : 0;
+    double Yr = EEffectorZ - 65.2f;
+    double Xr = -sqrt(EEffectorX * EEffectorX + EEffectorY * EEffectorY) ;
+    if ((yaw * (int) theta1r) == 0)
+    {
+        beta = 180 * (yaw > 90.0f) + (-pitch) * ((yaw < 90.0f) * 2 - 1);
+    }
+    else
+    {
+        beta = 180 * ((yaw * theta1r) < 0.0f) + (-pitch) * (((yaw * theta1r) > 0.0f) * 2 - 1);
+    }
+    double P2xr = Xr - 93 * qCos(beta * M_PI / 180);
+    double P2yr = Yr - 93 * qSin(beta * M_PI / 180);
+    double theta3r = qAcos((P2xr*P2xr + P2yr*P2yr - 300*300 - 383*383) / (2 * 300 * 383)) * 180 / M_PI ;
+    double theta2r = (qAtan2(P2yr, P2xr) - qAtan2( (383 * qSin(theta3r * M_PI / 180))  ,
+                                            ( (300 + 383 * qCos(theta3r * M_PI / 180) ) ) ) )* 180 / M_PI;
+    double theta4r = beta - theta3r - theta2r;
+
+    double theta1Solution = theta1;
+    double theta2Solution = theta2;
+    double theta3Solution = theta3;
+    double theta4Solution = theta4;
+
+    bool solutionChoice =
+    qFabs(qFabs(theta1) - (int) (qFabs(theta1) + 0.5f)) - qFabs(qFabs(theta1r) - (int) (qFabs(theta1r) + 0.5f)) +
+    qFabs(qFabs(theta2) - (int) (qFabs(theta2) + 0.5f)) - qFabs(qFabs(theta2r) - (int) (qFabs(theta2r) + 0.5f)) +
+    qFabs(qFabs(theta3) - (int) (qFabs(theta3) + 0.5f)) - qFabs(qFabs(theta3r) - (int) (qFabs(theta3r) + 0.5f)) +
+    qFabs(qFabs(theta4) - (int) (qFabs(theta4) + 0.5f)) - qFabs(qFabs(theta4r) - (int) (qFabs(theta4r) + 0.5f)) > 0;
+
+    if (solutionChoice)
+    {
+        theta1Solution = theta1r;
+        theta2Solution = theta2r;
+        theta3Solution = theta3r;
+        theta4Solution = theta4r;
+    }
     qDebug() << "\n";
-    qDebug() << beta;
-    qDebug() << X;
-    qDebug() << Y;
-    qDebug() << P2x;
-    qDebug() << P2y;
-    qDebug() << theta3;
+//    qDebug() << beta;
+//    qDebug() << P2xr;
+//    qDebug() << P2yr;
+//    qDebug() << P2xr;
+//    qDebug() << theta3r;
+//    qDebug() << theta2r;
+//    qDebug() << theta1 <<"         "<< theta1r;
+//    qDebug() << theta2 <<"         "<< theta2r;
+//    qDebug() << theta3 <<"         "<< theta3r;
+//    qDebug() << theta4 <<"         "<< theta4r;
+
+//    qDebug() << theta1r;
+//    qDebug() << theta2r;
+//    qDebug() << theta3r;
+//    qDebug() << theta4r;
+
+//    qDebug() << (qFabs(theta3 - (int) (theta3 + 0.5f)) > qFabs(theta3r - (int) (theta3r + 0.5f)));
+    qDebug() << round(constrainAngle(theta1Solution));
+    qDebug() << round(constrainAngle(theta2Solution));
+    qDebug() << round(theta3Solution);
+    qDebug() << round(constrainAngle(theta4Solution));
 }
 Scene::Scene(QString filepath, QString filepath2, QString filepath3, QString filepath4, QString filepath5, QString filepath6, ModelLoader::PathType pathType, QString texturePath) :
     m_indexBuffer(QOpenGLBuffer::IndexBuffer)
