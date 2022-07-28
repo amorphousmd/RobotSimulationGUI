@@ -15,6 +15,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTabWidget>
@@ -121,12 +122,14 @@ public:
     QLineEdit *lnEInvRoll;
     QLineEdit *lnEInvPitch;
     QLineEdit *lnEInvYaw;
+    QPushButton *pushButton;
+    QLabel *label_21;
 
     void setupUi(QWidget *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1326, 720);
+        MainWindow->resize(1301, 720);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -138,12 +141,12 @@ public:
         widgetMain->setAutoFillBackground(false);
         tabWidget = new QTabWidget(MainWindow);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tabWidget->setGeometry(QRect(960, 0, 361, 721));
+        tabWidget->setGeometry(QRect(960, 0, 431, 721));
         tab = new QWidget();
         tab->setObjectName(QString::fromUtf8("tab"));
         horizontalLayoutWidget_5 = new QWidget(tab);
         horizontalLayoutWidget_5->setObjectName(QString::fromUtf8("horizontalLayoutWidget_5"));
-        horizontalLayoutWidget_5->setGeometry(QRect(10, 250, 386, 31));
+        horizontalLayoutWidget_5->setGeometry(QRect(10, 250, 321, 31));
         horizontalLayout_8 = new QHBoxLayout(horizontalLayoutWidget_5);
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
         horizontalLayout_8->setContentsMargins(0, 0, 0, 0);
@@ -262,7 +265,7 @@ public:
 
         horizontalLayoutWidget_6 = new QWidget(tab);
         horizontalLayoutWidget_6->setObjectName(QString::fromUtf8("horizontalLayoutWidget_6"));
-        horizontalLayoutWidget_6->setGeometry(QRect(10, 480, 386, 31));
+        horizontalLayoutWidget_6->setGeometry(QRect(10, 480, 321, 31));
         horizontalLayout_9 = new QHBoxLayout(horizontalLayoutWidget_6);
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
         horizontalLayout_9->setContentsMargins(0, 0, 0, 0);
@@ -504,8 +507,9 @@ public:
 
         horizontalSliderInvX = new QSlider(gridLayoutWidget_2);
         horizontalSliderInvX->setObjectName(QString::fromUtf8("horizontalSliderInvX"));
-        horizontalSliderInvX->setMinimum(-70000);
-        horizontalSliderInvX->setMaximum(70000);
+        horizontalSliderInvX->setMinimum(-80000);
+        horizontalSliderInvX->setMaximum(80000);
+        horizontalSliderInvX->setValue(72481);
         horizontalSliderInvX->setOrientation(Qt::Horizontal);
 
         gridLayout_2->addWidget(horizontalSliderInvX, 0, 1, 1, 1);
@@ -514,6 +518,7 @@ public:
         horizontalSliderInvRoll->setObjectName(QString::fromUtf8("horizontalSliderInvRoll"));
         horizontalSliderInvRoll->setMinimum(-180);
         horizontalSliderInvRoll->setMaximum(180);
+        horizontalSliderInvRoll->setValue(90);
         horizontalSliderInvRoll->setOrientation(Qt::Horizontal);
 
         gridLayout_2->addWidget(horizontalSliderInvRoll, 3, 1, 1, 1);
@@ -522,6 +527,7 @@ public:
         horizontalSliderInvZ->setObjectName(QString::fromUtf8("horizontalSliderInvZ"));
         horizontalSliderInvZ->setMinimum(-80000);
         horizontalSliderInvZ->setMaximum(80000);
+        horizontalSliderInvZ->setValue(29727);
         horizontalSliderInvZ->setOrientation(Qt::Horizontal);
 
         gridLayout_2->addWidget(horizontalSliderInvZ, 2, 1, 1, 1);
@@ -540,14 +546,16 @@ public:
         horizontalSliderInvPitch->setObjectName(QString::fromUtf8("horizontalSliderInvPitch"));
         horizontalSliderInvPitch->setMinimum(-180);
         horizontalSliderInvPitch->setMaximum(180);
+        horizontalSliderInvPitch->setValue(-32);
         horizontalSliderInvPitch->setOrientation(Qt::Horizontal);
 
         gridLayout_2->addWidget(horizontalSliderInvPitch, 4, 1, 1, 1);
 
         horizontalSliderInvY = new QSlider(gridLayoutWidget_2);
         horizontalSliderInvY->setObjectName(QString::fromUtf8("horizontalSliderInvY"));
-        horizontalSliderInvY->setMinimum(-70000);
-        horizontalSliderInvY->setMaximum(70000);
+        horizontalSliderInvY->setMinimum(-80000);
+        horizontalSliderInvY->setMaximum(80000);
+        horizontalSliderInvY->setValue(-2531);
         horizontalSliderInvY->setOrientation(Qt::Horizontal);
 
         gridLayout_2->addWidget(horizontalSliderInvY, 1, 1, 1, 1);
@@ -566,13 +574,14 @@ public:
         horizontalSliderInvYaw->setObjectName(QString::fromUtf8("horizontalSliderInvYaw"));
         horizontalSliderInvYaw->setMinimum(-180);
         horizontalSliderInvYaw->setMaximum(180);
+        horizontalSliderInvYaw->setValue(-2);
         horizontalSliderInvYaw->setOrientation(Qt::Horizontal);
 
         gridLayout_2->addWidget(horizontalSliderInvYaw, 5, 1, 1, 1);
 
         verticalLayoutWidget_3 = new QWidget(tab_3);
         verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
-        verticalLayoutWidget_3->setGeometry(QRect(270, 30, 71, 231));
+        verticalLayoutWidget_3->setGeometry(QRect(270, 30, 61, 231));
         verticalLayout_5 = new QVBoxLayout(verticalLayoutWidget_3);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
@@ -612,6 +621,12 @@ public:
 
         verticalLayout_5->addWidget(lnEInvYaw);
 
+        pushButton = new QPushButton(tab_3);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(110, 280, 111, 41));
+        label_21 = new QLabel(tab_3);
+        label_21->setObjectName(QString::fromUtf8("label_21"));
+        label_21->setGeometry(QRect(80, 330, 181, 20));
         tabWidget->addTab(tab_3, QString());
 
         retranslateUi(MainWindow);
@@ -657,6 +672,8 @@ public:
         label_19->setText(QCoreApplication::translate("MainWindow", "Pitch", nullptr));
         label_16->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
         label_20->setText(QCoreApplication::translate("MainWindow", "Yaw", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "Start", nullptr));
+        label_21->setText(QCoreApplication::translate("MainWindow", "Roll and Yaw has no effects", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Inverse Kinematics", nullptr));
     } // retranslateUi
 

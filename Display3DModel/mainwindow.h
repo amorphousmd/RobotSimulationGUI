@@ -8,6 +8,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+void calculateInverseKinematics(float EEffectorX, float EEffectorY, float EEffectorZ, float pitch);
 
 class MainWindow : public QMainWindow
 {
@@ -89,6 +90,8 @@ private slots:
     void on_horizontalSliderInvPitch_valueChanged(int value);
 
     void on_horizontalSliderInvYaw_valueChanged(int value);
+
+    void on_pushButton_clicked();
 
 private:
 

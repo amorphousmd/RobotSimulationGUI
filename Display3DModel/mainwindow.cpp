@@ -8,6 +8,7 @@
 #include <QFileDialog>
 #include "scene.h"
 #include "scene_gles.h"
+#include <QtMath>
 
 int nTranslationX = 0;
 int nTranslationY = 0;
@@ -19,8 +20,47 @@ int nAngleJ1 = 0;
 int nAngleJ2 = 0;
 int nAngleJ3 = 0;
 int nAngleJ4 = 0;
+double theta1Solution = 0.0f;
+double theta2Solution = 0.0f;
+double theta3Solution = 0.0f;
+double theta4Solution = 0.0f;
 
 MainWindow* pMainWindow = nullptr;
+
+double constrainAngle(double x){
+    x = fmod(x + 180,360);
+    if (x < 0)
+        x += 360;
+    return x - 180;
+}
+
+void calculateInverseKinematics(float EEffectorX, float EEffectorY, float EEffectorZ, float pitch)
+{
+    // Normal Mode Inverse Kinematics
+    double theta1 = qAtan2(EEffectorY, EEffectorX) * 180 / M_PI;
+
+    double Y = EEffectorZ - 65.2f;
+    double X = sqrt(EEffectorX * EEffectorX + EEffectorY * EEffectorY) ;
+    double beta = 0.0f;
+    beta = -pitch;
+
+    double P2x = X - 93 * qCos(beta * M_PI / 180);
+    double P2y = Y - 93 * qSin(beta * M_PI / 180);
+    double theta3 = qAcos((P2x*P2x + P2y*P2y - 300*300 - 383*383) / (2 * 300 * 383)) * 180 / M_PI ;
+    double theta2 = (qAtan(P2y/ P2x) - qAtan2( (383 * qSin(theta3 * M_PI / 180))  ,
+                                            ( 300 + 383 * qCos(theta3 * M_PI / 180) ) ) )* 180 / M_PI;
+    double theta4 = beta - theta3 - theta2;
+
+    theta1Solution = theta1;
+    theta2Solution = theta2;
+    theta3Solution = theta3;
+    theta4Solution = theta4;
+
+    qDebug() << round(constrainAngle(theta1Solution));
+    qDebug() << round(constrainAngle(theta2Solution));
+    qDebug() << round(theta3Solution);
+    qDebug() << round(constrainAngle(theta4Solution));
+}
 
 QWidget* MainWindow::getWidgetMain()
 {
@@ -270,35 +310,109 @@ void MainWindow::updateEffector(float EffectorX, float EffectorY, float Effector
 void MainWindow::on_horizontalSliderInvX_valueChanged(int value)
 {
     ui->lnEInvX->setText(QString::number((float)value / 100));
+    calculateInverseKinematics(ui->horizontalSliderInvX->value() / (float) 100,
+                               ui->horizontalSliderInvY->value() / (float) 100,
+                               ui->horizontalSliderInvZ->value() / (float) 100,
+                               ui->horizontalSliderInvPitch->value()
+);
+    ui->horizontalSliderJ1->setValue((int) theta1Solution);
+    ui->horizontalSliderJ2->setValue((int) theta2Solution);
+    ui->horizontalSliderJ3->setValue((int) theta3Solution);
+    ui->horizontalSliderJ4->setValue((int) theta4Solution);
 }
 
 
 void MainWindow::on_horizontalSliderInvY_valueChanged(int value)
 {
     ui->lnEInvY->setText(QString::number((float)value / 100));
+    calculateInverseKinematics(ui->horizontalSliderInvX->value() / (float) 100,
+                               ui->horizontalSliderInvY->value() / (float) 100,
+                               ui->horizontalSliderInvZ->value() / (float) 100,
+                               ui->horizontalSliderInvPitch->value()
+);
+    ui->horizontalSliderJ1->setValue((int) theta1Solution);
+    ui->horizontalSliderJ2->setValue((int) theta2Solution);
+    ui->horizontalSliderJ3->setValue((int) theta3Solution);
+    ui->horizontalSliderJ4->setValue((int) theta4Solution);
 }
 
 
 void MainWindow::on_horizontalSliderInvZ_valueChanged(int value)
 {
     ui->lnEInvZ->setText(QString::number((float)value / 100));
+    calculateInverseKinematics(ui->horizontalSliderInvX->value() / (float) 100,
+                               ui->horizontalSliderInvY->value() / (float) 100,
+                               ui->horizontalSliderInvZ->value() / (float) 100,
+                               ui->horizontalSliderInvPitch->value()
+);
+    ui->horizontalSliderJ1->setValue((int) theta1Solution);
+    ui->horizontalSliderJ2->setValue((int) theta2Solution);
+    ui->horizontalSliderJ3->setValue((int) theta3Solution);
+    ui->horizontalSliderJ4->setValue((int) theta4Solution);
 }
 
 
 void MainWindow::on_horizontalSliderInvRoll_valueChanged(int value)
 {
     ui->lnEInvRoll->setText(QString::number(value));
+    calculateInverseKinematics(ui->horizontalSliderInvX->value() / (float) 100,
+                               ui->horizontalSliderInvY->value() / (float) 100,
+                               ui->horizontalSliderInvZ->value() / (float) 100,
+                               ui->horizontalSliderInvPitch->value()
+);
+    ui->horizontalSliderJ1->setValue((int) theta1Solution);
+    ui->horizontalSliderJ2->setValue((int) theta2Solution);
+    ui->horizontalSliderJ3->setValue((int) theta3Solution);
+    ui->horizontalSliderJ4->setValue((int) theta4Solution);
 }
 
 
 void MainWindow::on_horizontalSliderInvPitch_valueChanged(int value)
 {
     ui->lnEInvPitch->setText(QString::number(value));
+    calculateInverseKinematics(ui->horizontalSliderInvX->value() / (float) 100,
+                               ui->horizontalSliderInvY->value() / (float) 100,
+                               ui->horizontalSliderInvZ->value() / (float) 100,
+                               ui->horizontalSliderInvPitch->value()
+);
+    ui->horizontalSliderJ1->setValue((int) theta1Solution);
+    ui->horizontalSliderJ2->setValue((int) theta2Solution);
+    ui->horizontalSliderJ3->setValue((int) theta3Solution);
+    ui->horizontalSliderJ4->setValue((int) theta4Solution);
 }
 
 
 void MainWindow::on_horizontalSliderInvYaw_valueChanged(int value)
 {
     ui->lnEInvYaw->setText(QString::number(value));
+    calculateInverseKinematics(ui->horizontalSliderInvX->value() / (float) 100,
+                               ui->horizontalSliderInvY->value() / (float) 100,
+                               ui->horizontalSliderInvZ->value() / (float) 100,
+                               ui->horizontalSliderInvPitch->value()
+);
+    ui->horizontalSliderJ1->setValue((int) theta1Solution);
+    ui->horizontalSliderJ2->setValue((int) theta2Solution);
+    ui->horizontalSliderJ3->setValue((int) theta3Solution);
+    ui->horizontalSliderJ4->setValue((int) theta4Solution);
+}
+
+
+void MainWindow::on_pushButton_clicked()
+{
+    ui->lnEInvX->setText(QString::number((float)(ui->horizontalSliderInvX->value()) / 100));
+    ui->lnEInvY->setText(QString::number((float)(ui->horizontalSliderInvY->value()) / 100));
+    ui->lnEInvZ->setText(QString::number((float)(ui->horizontalSliderInvZ->value()) / 100));
+    ui->lnEInvRoll->setText(QString::number((float)(ui->horizontalSliderInvRoll->value())));
+    ui->lnEInvPitch->setText(QString::number((float)(ui->horizontalSliderInvPitch->value())))
+    ;
+    calculateInverseKinematics(ui->horizontalSliderInvX->value() / (float) 100,
+                               ui->horizontalSliderInvY->value() / (float) 100,
+                               ui->horizontalSliderInvZ->value() / (float) 100,
+                               ui->horizontalSliderInvPitch->value()
+                              );
+    ui->horizontalSliderJ1->setValue((int) theta1Solution);
+    ui->horizontalSliderJ2->setValue((int) theta2Solution);
+    ui->horizontalSliderJ3->setValue((int) theta3Solution);
+    ui->horizontalSliderJ4->setValue((int) theta4Solution);
 }
 

@@ -65,5 +65,4 @@ private:
 
 QMatrix4x4 calculateDHMatrix(float theta, float alpha, float r, float d);
 
-
 #endif // SCENE_H
