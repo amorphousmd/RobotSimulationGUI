@@ -21,7 +21,6 @@ public:
 
 protected:
     void initializeGL();
-    void initializeGL1();
 
 private:
     QTimer *m_timer;

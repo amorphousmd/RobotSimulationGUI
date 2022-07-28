@@ -10,12 +10,12 @@
 #include "modelloader.h"
 #include "scenebase.h"
 
+
 class Scene : public QOpenGLFunctions_3_3_Core, public SceneBase
 {
 public:
     Scene(QString filepath, QString filepath2, QString filepath3, QString filepath4, QString filepath5, QString filepath6, ModelLoader::PathType pathType, QString texturePath="");
     void initialize();
-    void initialize1();
     void resize(int w, int h);
     void update();
     void cleanup();
@@ -62,5 +62,7 @@ private:
 
     bool m_error;
 };
+
+QMatrix4x4 calculateDHMatrix(float theta, float alpha, float r, float d);
 
 #endif // SCENE_H
