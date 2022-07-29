@@ -16,7 +16,7 @@ QString OpenGL_Model3("re3dmodel/Link3.stl");
 QString OpenGL_Model4("re3dmodel/Link4.stl");
 QString OpenGL_Model5("re3dmodel/tool.stl");
 
-//QString OpenGLES_Model("demon_head/demon_head.3ds");
+//QString OpenGLES_Model("demon_head/demon_head.3ds"); // OpenGLES left out
 
 class SceneSelect : public SceneSelector {
     SceneBase* getScene(QPair<int, int> glVersion, bool isOpenGLES) {
@@ -43,13 +43,16 @@ int main(int argc, char *argv[])
 
     OpenGLWindow w1(&sceneSelect, 20, 3, 3); // Lower the second variable to increase refresh rate
 
+
+    // Create OpenGL window
     QWidget *container = QMainWindow::createWindowContainer(&w1);
     QWidget *widget = w.getWidgetMain();
     QHBoxLayout *hLayout = new QHBoxLayout(widget);
     QVBoxLayout *vLayout = new QVBoxLayout();
+    // Add window to ui
     hLayout->addWidget(container, 1);
     hLayout->addLayout(vLayout);
-    QObject::connect(&w, &MainWindow::destroyed, widget, &QWidget::deleteLater); // Make widget close as mainwindow
+    QObject::connect(&w, &MainWindow::destroyed, widget, &QWidget::deleteLater); // Make widget close as mainwindow closes
     w.show();
     return a.exec();
 

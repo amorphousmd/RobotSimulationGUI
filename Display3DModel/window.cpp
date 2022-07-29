@@ -1,3 +1,5 @@
+// The OpenGL window controller, many functions here are taken from scene.h
+
 #include "window.h"
 #include <QKeyEvent>
 #include <QOpenGLContext>

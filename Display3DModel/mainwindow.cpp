@@ -1,3 +1,6 @@
+// File use for the mainwindow (that can be edited in mainwindow.ui)
+// The functions start with get__ are functions that are uses to pass values to other files
+
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "window.h"
@@ -25,8 +28,10 @@ double theta2Solution = 0.0f;
 double theta3Solution = 0.0f;
 double theta4Solution = 0.0f;
 
+// Getting the pointer to the UI, allows other files to edit the GUI (by passing this pointer to other files)
 MainWindow* pMainWindow = nullptr;
 
+// Normalize angle to -180 -> 180 degree
 double constrainAngle(double x){
     x = fmod(x + 180,360);
     if (x < 0)
@@ -34,32 +39,38 @@ double constrainAngle(double x){
     return x - 180;
 }
 
+// Inverse Kinematics, a slight modification of the solution of a planar 3R robot
+
 void calculateInverseKinematics(float EEffectorX, float EEffectorY, float EEffectorZ, float pitch)
 {
-    // Normal Mode Inverse Kinematics
+
     double theta1 = qAtan2(EEffectorY, EEffectorX) * 180 / M_PI;
 
     double Y = EEffectorZ - 65.2f;
     double X = sqrt(EEffectorX * EEffectorX + EEffectorY * EEffectorY) ;
-    double beta = 0.0f;
-    beta = -pitch;
-
+    double beta = -pitch;
     double P2x = X - 93 * qCos(beta * M_PI / 180);
     double P2y = Y - 93 * qSin(beta * M_PI / 180);
+
     double theta3 = qAcos((P2x*P2x + P2y*P2y - 300*300 - 383*383) / (2 * 300 * 383)) * 180 / M_PI ;
+
     double theta2 = (qAtan(P2y/ P2x) - qAtan2( (383 * qSin(theta3 * M_PI / 180))  ,
                                             ( 300 + 383 * qCos(theta3 * M_PI / 180) ) ) )* 180 / M_PI;
     double theta4 = beta - theta3 - theta2;
 
+    // Update the solution variables everytime
     theta1Solution = theta1;
     theta2Solution = theta2;
     theta3Solution = theta3;
     theta4Solution = theta4;
 
-    qDebug() << round(constrainAngle(theta1Solution));
-    qDebug() << round(constrainAngle(theta2Solution));
-    qDebug() << round(theta3Solution);
-    qDebug() << round(constrainAngle(theta4Solution));
+
+    // Used for checking the angles
+
+//    qDebug() << round(constrainAngle(theta1Solution));
+//    qDebug() << round(constrainAngle(theta2Solution));
+//    qDebug() << round(theta3Solution);
+//    qDebug() << round(constrainAngle(theta4Solution));
 }
 
 QWidget* MainWindow::getWidgetMain()
@@ -150,9 +161,6 @@ int getTranslationZ()
 {
     return nTranslationZ;
 }
-
-
-
 
 void MainWindow::on_horizontalSliderJ1_valueChanged(int value)
 {
@@ -292,6 +300,7 @@ void MainWindow::setEffectorYaw(float value)
     ui->lnEEffectorYaw->setText(QString::number(value));
 }
 
+// Return pointer function, used to access the GUI from another file
 MainWindow* getMainWinPtr()
 {
     return pMainWindow;
