@@ -91,6 +91,7 @@ bool ModelLoader::Load(QString filePath, PathType pathType)
 
     // This will transform the model to unit coordinates, so a model of any size or shape will fit on screen
     if (m_transformToUnitCoordinates)
+        // The line below is commented because we want to load multiple files
         //transformToUnitCoordinates();
 
     return true;

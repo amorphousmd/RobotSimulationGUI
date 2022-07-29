@@ -1,3 +1,6 @@
+// The main file for editing the OpenGL window, every rendering job is done here
+// The functions that start with get__ are used to pass values to other files
+
 #include "scene.h"
 #include "QTime"
 #include "mainwindow.h"
@@ -48,26 +51,7 @@ float getYawAngleE()
     return fYawAngleE;
 }
 
-//QMatrix4x4 calculateXRotationMatrix(float theta)
-//{
-//    QMatrix4x4 matrix = QMatrix4x4(1, 0, 0, 0,
-//                                   0, qCos(theta * M_PI / 180), -qSin(theta * M_PI / 180), 0,
-//                                   0, qSin(theta* M_PI / 180), qCos(theta* M_PI / 180), 0,
-//                                   0, 0, 0, 1);
-//    return matrix;
-//}
-
-//QMatrix4x4 calculateYRotationMatrix(float theta)
-//{
-//    QMatrix4x4 matrix = QMatrix4x4( qCos(theta * M_PI / 180), 0, qSin(theta * M_PI / 180), 0,
-//                                   0, 1, 0, 0,
-//                                   -qSin(theta * M_PI / 180), 0, qCos(theta* M_PI / 180), 0,
-//                                   0, 0, 0, 1);
-//    return matrix;
-//}
-
-
-
+// Basic Z rotation calculation
 QMatrix4x4 calculateZRotationMatrix(float theta)
 {
     QMatrix4x4 matrix = QMatrix4x4(qCos(theta * M_PI / 180), -qSin(theta * M_PI / 180), 0, 0,
@@ -77,6 +61,7 @@ QMatrix4x4 calculateZRotationMatrix(float theta)
     return matrix;
 }
 
+// Basic Denavit-Hartenberg matrix calculation
 QMatrix4x4 calculateDHMatrix(float theta, float alpha, float r, float d)
 {
     QMatrix4x4 matrix = QMatrix4x4(qCos(theta * M_PI / 180), -qSin(theta * M_PI / 180) * qCos(alpha * M_PI / 180), qSin(theta * M_PI / 180) * qSin(alpha * M_PI / 180), r * qCos(theta * M_PI / 180),
@@ -86,7 +71,7 @@ QMatrix4x4 calculateDHMatrix(float theta, float alpha, float r, float d)
     return matrix;
 }
 
-
+// A scene object that is initalized by the 6 STL files
 Scene::Scene(QString filepath, QString filepath2, QString filepath3, QString filepath4, QString filepath5, QString filepath6, ModelLoader::PathType pathType, QString texturePath) :
     m_indexBuffer(QOpenGLBuffer::IndexBuffer)
   , m_filepath(filepath)
@@ -112,7 +97,7 @@ void Scene::initialize()
     createAttributes();
     setupLightingAndMatrices();
 
-    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_DEPTH_TEST); // Requires for scene to render correctly
     glClearColor(.9f, .9f, .93f ,1.0f); // Background color
     m_vao.create();
 
@@ -133,6 +118,7 @@ void Scene::createShaderProgram(QString vShader, QString fShader)
         qCritical() << "Unable to link shader program. Log:" << m_shaderProgram.log();
 }
 
+// There are 6 create buffers function for the 6 STL files, can be shorten by making the function take a number as an input
 void Scene::createBuffers()
 {
     ModelLoader model;
@@ -513,7 +499,8 @@ void Scene::setupLightingAndMatrices()
                 60.0f,          // field of vision
                 aspect,         // aspect ratio
                 0.3f,           // near clipping plane
-                1000.0f);       // far clipping plane
+                1000.0f);       // far clipping plane, the value set here doesn't matter, change the clipping plane in the
+                                // resize function below
     m_lightInfo.Position = QVector4D( -1.0f, 1.0f, 1.0f, 1.0f );
     //m_lightInfo.Intensity = QVector3D( .5f, .5f, .f5);
     m_lightInfo.Intensity = QVector3D( 1.0f, 1.0f, 1.0f);
@@ -543,7 +530,8 @@ void Scene::update()
     // Bind shader program
     m_shaderProgram.bind();
 
-    // Draw the model here, the coordinates of m_model variable is where we draw the robot
+    // Draw the model here, the coordinates of m_model variable is where we draw the joints
+
     m_model.setToIdentity();
     m_model.translate(0.0f + float(getTranslationX()) * 3, 0.0f + float(getTranslationY()) * 3, float(getTranslationZ()) * 3);
     m_model.rotate(float(getRotationX()) - 90.0f, 1.0f, 0.0f, 0.0f);
@@ -559,13 +547,19 @@ void Scene::update()
     createBuffers();
     createAttributes();
     drawNode(m_rootNode.data(), QMatrix4x4());
+    // The reframe matrix is used to reposition the bottom of Link1.
+
     QMatrix4x4 reframeMatrixBase = QMatrix4x4(1.0f, 0.0f, 0.0f, 0.0f,
                                           0.0f, 1.0f, 0.0f, 0.0f,
                                           0.0f, 0.0f, 1.0f, 24.0f,
                                           0.0f, 0.0f, 0.0f, 1.0f);
+    // The base matrix is located at the bottom of Link1
     QMatrix4x4 baseMatrix = m_model * reframeMatrixBase;
+
+    // The CMatrix (inverted matrix) is applied to every matrix to get the X, Y, Z, Roll, Pitch, Yaw of every points relative to base
     QMatrix4x4 effectorCMatrix = baseMatrix.inverted();
 
+    // Basic Forwards DH transformation for every joint, the draw matrix takes into account the current rotation of the matrix
     QMatrix4x4 frameMatrix1 = baseMatrix;
     QMatrix4x4 frameMatrix1draw = frameMatrix1 * calculateZRotationMatrix(getAngleJ1());
     m_model = frameMatrix1draw * calculateDHMatrix(0.0f, -90.0f , 0.0f, 65.2f);
@@ -579,11 +573,13 @@ void Scene::update()
     createBuffers2();
     drawNode(m_rootNode.data(), QMatrix4x4());
 
+
     QMatrix4x4 frameMatrix3 = frameMatrix2 * calculateDHMatrix(getAngleJ2(), 0.0f, 300.0f, 0.0f);
     QMatrix4x4 frameMatrix3draw = frameMatrix3 * calculateZRotationMatrix(getAngleJ3());
     m_model = frameMatrix3draw * calculateDHMatrix(0.0f, 180.0f , 383.0f, 4.8f);
     createBuffers3();
     drawNode(m_rootNode.data(), QMatrix4x4());
+
 
     QMatrix4x4 frameMatrix4 = frameMatrix3 * calculateDHMatrix(getAngleJ3(), 0.0f, 383.0f, 0.0f);
     QMatrix4x4 frameMatrix4draw = frameMatrix4 * calculateZRotationMatrix(getAngleJ4());
@@ -591,19 +587,24 @@ void Scene::update()
     createBuffers4();
     drawNode(m_rootNode.data(), QMatrix4x4());
 
+
     QMatrix4x4 frameMatrix5 = frameMatrix4 * calculateDHMatrix(getAngleJ4(), 0.0f, 60.0f, 0.0f);
     QMatrix4x4 frameMatrix5draw = frameMatrix5;
     m_model = frameMatrix5draw * calculateDHMatrix(0.0f, 0.0f , 0.0f, 4.8f);
     createBuffers5();
     drawNode(m_rootNode.data(), QMatrix4x4());
 
-    QMatrix4x4 frameMatrixEndEffector = frameMatrix5 * calculateDHMatrix(0.0f, 0.0f, 33.0f, 0.0f);
 
+    QMatrix4x4 frameMatrixEndEffector = frameMatrix5 * calculateDHMatrix(0.0f, 0.0f, 33.0f, 0.0f);
+    //Get end effector matrix here, then calculate the X, Y, Z, Roll, Pitch, Yaw
+    // .data() returns a pointer to the first elememt, increment the pointer to get the other elements of the matrix
     QMatrix4x4 effectorMatrix = effectorCMatrix * frameMatrixEndEffector;
     float* pEffector = effectorMatrix.data();
     float yaw = qAtan2(*(pEffector + 1), *pEffector);
     float pitch = qAtan2(-*(pEffector + 2), qSqrt(*(pEffector + 6) * *(pEffector + 6) + *(pEffector + 10) * *(pEffector + 10)));
     float roll = qAtan2(*(pEffector + 6), *(pEffector + 10));
+
+    // Updating the after every calculation cycle
     MainWindow *mw = getMainWinPtr();
     mw->updateEffector(*(pEffector + 12), *(pEffector + 13), *(pEffector + 14), roll * 180 / M_PI, pitch * 180 / M_PI, yaw * 180 / M_PI  );
     calculateInverseKinematics(*(pEffector + 12), *(pEffector + 13), *(pEffector + 14), pitch * 180 / M_PI);
