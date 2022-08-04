@@ -8,6 +8,7 @@ Special thanks to https://github.com/khuong-nv for the STL files.
 I installed Qt5 using the Online Installer
 The packages are selected as such:
 ![packages](https://user-images.githubusercontent.com/20887245/182784869-030f7227-6eff-42d2-9eea-f4faaa424473.png)
+Assimp3.0 SDK: https://sourceforge.net/projects/assimp/files/assimp-3.0/assimp-sdk-3.0-setup.exe/download  
 
 If you run into this error just press OK  
 ![c54fe9c1-5eaa-4474-b7a8-dc64fa0e9675](https://user-images.githubusercontent.com/20887245/182780728-17298e2e-4892-4c62-9d0d-8ca811b08594.png)
