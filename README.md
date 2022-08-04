@@ -1,11 +1,9 @@
 # RobotSimulationGUI
+Requirements: Qt5, OpenGL3.3, Assimp.  
+Special thanks to https://github.com/khuong-nv for the STL files. 
 ![forward](https://user-images.githubusercontent.com/20887245/182783840-a8f7cf3e-092f-4740-be0a-017bbd83d65a.gif)  
 ![inverse](https://user-images.githubusercontent.com/20887245/182783852-413b5ce0-8422-4b0f-93aa-7698e692fc0e.gif)  
 
-Requirements: Qt5, OpenGL3.3, Assimp.  
-Special thanks to https://github.com/khuong-nv for the STL files.  
-
-![2022-07-29 11_04_20-](https://user-images.githubusercontent.com/20887245/181680687-385754c2-e0f5-4bdb-84b4-4acd6ecaae86.png)
 
 If you run into this error just press OK  
 ![c54fe9c1-5eaa-4474-b7a8-dc64fa0e9675](https://user-images.githubusercontent.com/20887245/182780728-17298e2e-4892-4c62-9d0d-8ca811b08594.png)
